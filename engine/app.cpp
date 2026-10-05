@@ -18,6 +18,7 @@ constexpr UINT TRAY_MESSAGE = WM_APP + 1;
 constexpr UINT OPEN_EDITOR = 100, PAUSE_SCREEN = 101, EXIT_APP = 102;
 HANDLE stopEvent = nullptr, wakeEvent = nullptr;
 HWND appWindow = nullptr;
+HPOWERNOTIFY powerNotifications = nullptr;
 NOTIFYICONDATAW trayData{};
 UINT taskbarCreated = 0;
 fs::path exePath, dataPath, editorPath;
@@ -28,6 +29,8 @@ struct State {
     Json scene = defaultScene();
     SensorSnapshot values;
     bool connected = false, wanted = false, stockRunning = false;
+    bool suspended = false;
+    uint64_t powerRevision = 0;
     unsigned long sceneRevision = 1;
     uint64_t framesSent = 0, lastFrameMs = 0;
     std::string message = "Ready to configure";
@@ -54,7 +57,7 @@ Json snapshotStatus() {
     PROCESS_MEMORY_COUNTERS_EX mem{}; mem.cb = sizeof(mem);
     GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&mem, sizeof(mem));
     std::lock_guard<std::mutex> lock(state.mutex);
-    return {{"connected", state.connected}, {"connecting", state.wanted && !state.connected},
+    return {{"connected", state.connected}, {"connecting", state.wanted && !state.connected && !state.suspended},
         {"stockRunning", state.stockRunning}, {"cpuTemp", state.values.hasCpuTemp ? Json(state.values.cpuTemp) : Json(nullptr)},
         {"gpuTemp", state.values.hasGpuTemp ? Json(state.values.gpuTemp) : Json(nullptr)},
         {"cpuUsage", state.values.cpuUsage}, {"ramPercent", state.values.ramPercent},
@@ -113,12 +116,28 @@ void worker() {
         unsigned long configuredRevision = 0;
         std::string lastKey;
         uint64_t lastSample = 0, lastStockCheck = 0, retryAt = 0, lastKeepalive = 0;
+        uint64_t powerRevision = 0;
         while (WaitForSingleObject(stopEvent, 0) != WAIT_OBJECT_0) {
             auto now = GetTickCount64();
-            Json scene; bool wanted; unsigned long revision;
+            Json scene; bool wanted, suspended, resetDisplay; unsigned long revision;
             {
                 std::lock_guard<std::mutex> lock(state.mutex);
                 scene = state.scene; wanted = state.wanted; revision = state.sceneRevision;
+                suspended = state.suspended;
+                resetDisplay = powerRevision != state.powerRevision;
+                powerRevision = state.powerRevision;
+            }
+            if (resetDisplay) {
+                // Only this thread owns USB I/O. Dropping the old session also invalidates
+                // the background cache, even when Windows kept the HID handle alive.
+                display.close(); configuredRevision = 0; lastKey.clear();
+                retryAt = lastKeepalive = lastSample = lastStockCheck = 0;
+                logEvent(suspended ? "System suspended; LCD session closed." : "System resumed; rebuilding LCD session.");
+            }
+            if (suspended) {
+                HANDLE events[] = {stopEvent, wakeEvent};
+                WaitForMultipleObjects(2, events, FALSE, INFINITE);
+                continue;
             }
             int interval = scene["intervalMs"].get<int>();
             if (!lastStockCheck || now - lastStockCheck >= 5000) {
@@ -135,6 +154,11 @@ void worker() {
                 SensorSnapshot sample = sensors.sample();
                 { std::lock_guard<std::mutex> lock(state.mutex); state.values = sample; }
                 lastSample = now;
+            }
+            {
+                std::lock_guard<std::mutex> lock(state.mutex);
+                if (state.suspended || state.powerRevision != powerRevision) continue;
+                wanted = state.wanted;
             }
             if (!wanted && display.isOpen()) {
                 display.close(); configuredRevision = 0; lastKey.clear();
@@ -154,12 +178,16 @@ void worker() {
                         display.configure(renderer.background(scene), scene["rotation"].get<int>());
                         configuredRevision = revision; lastKey.clear();
                         std::lock_guard<std::mutex> lock(state.mutex);
+                        if (state.powerRevision != powerRevision || state.suspended || !state.wanted) continue;
                         state.connected = true; state.message = "Display connected";
                         atomicWriteJson(dataPath / L"agent.json", {{"connectOnStartup", true}});
                         logEvent("LCD connected.");
                     } catch (const std::exception& e) {
                         display.close(); retryAt = now + 10000;
                         std::lock_guard<std::mutex> lock(state.mutex);
+                        // A suspend/resume during a transfer must not turn a transient
+                        // firmware rejection into a permanent user-requested stop.
+                        if (state.powerRevision != powerRevision || state.suspended) continue;
                         if (dynamic_cast<const std::invalid_argument*>(&e)) state.wanted = false;
                         state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · retrying in 10 seconds" : "");
                         logEvent(std::string("LCD connection: ") + e.what());
@@ -186,6 +214,7 @@ void worker() {
                 } catch (const std::exception& e) {
                     display.close(); retryAt = GetTickCount64() + 10000;
                     std::lock_guard<std::mutex> lock(state.mutex);
+                    if (state.powerRevision != powerRevision || state.suspended) continue;
                     if (dynamic_cast<const std::invalid_argument*>(&e)) state.wanted = false;
                     state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · retrying in 10 seconds" : "");
                     logEvent(std::string("LCD transfer: ") + e.what());
@@ -380,6 +409,23 @@ HICON createTrayIcon() {
 }
 
 LRESULT CALLBACK windowProc(HWND h, UINT msg, WPARAM wp, LPARAM lp) {
+    if (msg == WM_POWERBROADCAST) {
+        // RESUMEAUTOMATIC covers both user and unattended wakeups. Windows may
+        // subsequently send RESUMESUSPEND; do not reconnect a second time for it.
+        if (wp == PBT_APMSUSPEND || wp == PBT_APMRESUMEAUTOMATIC) {
+            {
+                std::lock_guard<std::mutex> lock(state.mutex);
+                state.suspended = wp == PBT_APMSUSPEND;
+                ++state.powerRevision;
+                state.connected = false;
+                state.deviceInfo.clear();
+                state.message = state.suspended ? "System suspended" :
+                    (state.wanted ? "Restoring display after resume..." : "Transfer stopped");
+            }
+            SetEvent(wakeEvent);
+        }
+        return TRUE;
+    }
     if (taskbarCreated && msg == taskbarCreated) { Shell_NotifyIconW(NIM_ADD, &trayData); return 0; }
     if (msg == TRAY_MESSAGE) {
         if (LOWORD(lp) == WM_LBUTTONDBLCLK || LOWORD(lp) == NIN_SELECT) launchEditor();
@@ -406,7 +452,10 @@ LRESULT CALLBACK windowProc(HWND h, UINT msg, WPARAM wp, LPARAM lp) {
         return 0;
     }
     if (msg == WM_CLOSE) { DestroyWindow(h); return 0; }
-    if (msg == WM_DESTROY) { SetEvent(stopEvent); PostQuitMessage(0); return 0; }
+    if (msg == WM_DESTROY) {
+        if (powerNotifications) { UnregisterSuspendResumeNotification(powerNotifications); powerNotifications = nullptr; }
+        SetEvent(stopEvent); PostQuitMessage(0); return 0;
+    }
     return DefWindowProcW(h, msg, wp, lp);
 }
 }
@@ -467,6 +516,8 @@ int wmain(int argc, wchar_t** argv) {
         taskbarCreated = RegisterWindowMessageW(L"TaskbarCreated");
         appWindow = CreateWindowW(wc.lpszClassName, L"PurrLCD", 0, 0, 0, 0, 0, nullptr, nullptr, instance, nullptr);
         if (!appWindow) throw std::runtime_error("Cannot create tray window");
+        powerNotifications = RegisterSuspendResumeNotification(appWindow, DEVICE_NOTIFY_WINDOW_HANDLE);
+        if (!powerNotifications) throw std::runtime_error("Cannot register power notifications: " + errorText());
         NOTIFYICONDATAW tray{}; tray.cbSize = sizeof(tray); tray.hWnd = appWindow; tray.uID = 1;
         tray.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP; tray.uCallbackMessage = TRAY_MESSAGE;
         tray.hIcon = createTrayIcon(); wcscpy_s(tray.szTip, L"PurrLCD — double-click to open the editor");

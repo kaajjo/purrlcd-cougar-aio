@@ -82,6 +82,16 @@ if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать прове�
 & $sceneTestExe
 if ($LASTEXITCODE -ne 0) { throw 'Проверки отрисовки не прошли.' }
 
+Write-Host 'Проверка восстановления после сна без обращения к экрану…'
+$powerTestExe = Join-Path $nativeBuild 'power_resume_test.exe'
+$powerTestSources = @((Join-Path $engineSource 'power_resume_test.cpp')) + @($sources | Where-Object { [IO.Path]::GetFileName($_) -ne 'app.cpp' })
+& $clangPath -std=c++17 -O2 -static -DUNICODE -D_UNICODE -DNOMINMAX -D_WIN32_WINNT=0x0A00 `
+    @powerTestSources -lgdiplus -lole32 -loleaut32 -luuid -lshell32 -ladvapi32 `
+    -lpsapi -lsetupapi -lhid -luser32 -lgdi32 -o $powerTestExe
+if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать проверки восстановления после сна.' }
+& $powerTestExe
+if ($LASTEXITCODE -ne 0) { throw 'Проверки восстановления после сна не прошли.' }
+
 
 if (-not $SkipEditor) {
     if (-not (Get-Command java -CommandType Application -ErrorAction SilentlyContinue)) {
