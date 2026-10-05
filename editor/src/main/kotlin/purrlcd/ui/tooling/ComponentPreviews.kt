@@ -31,11 +31,11 @@ import purrlcd.ui.theme.Good
 import purrlcd.ui.theme.Muted
 import purrlcd.ui.theme.Orange
 
-@Preview(name = "Sidebar · online / offline", group = "Components", widthDp = 374, heightDp = 600)
+@Preview(name = "Sidebar · online / offline", group = "Components", widthDp = 448, heightDp = 600)
 @Composable
 fun SidebarPreview() {
     var page by remember { mutableStateOf(0) }
-    PreviewFrame(374.dp, 600.dp) {
+    PreviewFrame(EditorDimensions.SidebarWidth * 2, 600.dp) {
         Row {
             Sidebar(page = page, onPage = { page = it }, ready = true)
             Sidebar(page = 1, onPage = {}, ready = false)
@@ -43,7 +43,7 @@ fun SidebarPreview() {
     }
 }
 
-@Preview(name = "Metric cards · available / missing", group = "Components", widthDp = 326, heightDp = 310)
+@Preview(name = "Metric cards · available / missing", group = "Components", widthDp = 344, heightDp = 310)
 @Composable
 fun MetricCardsPreview() {
     PreviewFrame(EditorDimensions.InspectorWidth, 310.dp) {
@@ -57,7 +57,7 @@ fun MetricCardsPreview() {
     }
 }
 
-@Preview(name = "Information cards", group = "Components", widthDp = 326, heightDp = 440)
+@Preview(name = "Information cards", group = "Components", widthDp = 344, heightDp = 440)
 @Composable
 fun InformationCardsPreview() {
     PreviewFrame(EditorDimensions.InspectorWidth, 440.dp) {
@@ -72,7 +72,7 @@ fun InformationCardsPreview() {
     }
 }
 
-@Preview(name = "Fields", group = "Components", widthDp = 326, heightDp = 500)
+@Preview(name = "Fields", group = "Components", widthDp = 344, heightDp = 500)
 @Composable
 fun FieldsPreview() {
     var label by remember { mutableStateOf("CPU") }
@@ -94,7 +94,7 @@ fun FieldsPreview() {
     }
 }
 
-@Preview(name = "Choices and status labels", group = "Components", widthDp = 326, heightDp = 220)
+@Preview(name = "Choices and status labels", group = "Components", widthDp = 344, heightDp = 220)
 @Composable
 fun ControlsPreview() {
     var selected by remember { mutableStateOf(0) }

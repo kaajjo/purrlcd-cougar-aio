@@ -2,7 +2,6 @@ package purrlcd.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,7 +48,6 @@ import purrlcd.ui.theme.Line
 import purrlcd.ui.theme.Muted
 import purrlcd.ui.theme.Orange
 import purrlcd.ui.theme.Panel
-import purrlcd.ui.theme.SelectedNavigationSurface
 import purrlcd.ui.theme.SidebarSurface
 import purrlcd.ui.theme.editorTextStyle
 
@@ -90,25 +91,17 @@ fun Sidebar(page: Int, onPage: (Int) -> Unit, ready: Boolean) {
             stringResource(Res.string.sidebar_settings)
         ).forEachIndexed { index, label ->
             val selected = index == page
-            Row(
-                Modifier.fillMaxWidth().clip(EditorShapes.Button)
-                    .background(if (selected) SelectedNavigationSurface else Color.Transparent)
-                    .clickable { onPage(index) }
-                    .padding(horizontal = EditorSpacing.Space12, vertical = EditorSpacing.Space12),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space12)
-            ) {
-                NavIcon(index, if (selected) Orange else Muted)
-                Text(
-                    label,
-                    color = if (selected) Orange else Muted,
-                    style = editorTextStyle(if (selected) EditorTypography.NavigationSelected else EditorTypography.Navigation)
-                )
-            }
+            NavigationDrawerItem(
+                selected = selected,
+                onClick = { onPage(index) },
+                label = { Text(label, style = editorTextStyle(EditorTypography.Navigation), maxLines = 1) },
+                icon = { NavIcon(index, LocalContentColor.current) },
+                colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent)
+            )
             Spacer(Modifier.height(EditorSpacing.Space8))
         }
         Spacer(Modifier.weight(1f))
-        Divider(color = Line)
+        HorizontalDivider(color = Line)
         Spacer(Modifier.height(EditorSpacing.Space16))
         Row(
             verticalAlignment = Alignment.CenterVertically,

@@ -18,11 +18,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Divider
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
+import androidx.compose.foundation.VerticalScrollbar
+import androidx.compose.foundation.LocalScrollbarStyle
+import androidx.compose.foundation.rememberScrollbarAdapter
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -98,6 +101,7 @@ fun EditorContent(
 ) {
     var page by remember { mutableStateOf(initialPage) }
     var selectedLayer by remember { mutableStateOf(0) }
+    val inspectorScroll = rememberScrollState()
 
     Row(Modifier.fillMaxSize().background(Bg)) {
         Sidebar(page, { page = it }, ready)
@@ -138,7 +142,7 @@ fun EditorContent(
                     )
                     Button(
                         onClick = onSave, enabled = ready && !busy && dirty,
-                        shape = EditorShapes.Button, elevation = ButtonDefaults.elevation(0.dp),
+                        shape = EditorShapes.Button, elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp),
                         contentPadding = PaddingValues(
                             horizontal = EditorSpacing.Space24,
                             vertical = EditorSpacing.Space12
@@ -148,7 +152,7 @@ fun EditorContent(
                     }
                 }
             }
-            Divider(color = Line)
+            HorizontalDivider(color = Line)
             Row(Modifier.weight(1f).fillMaxWidth()) {
                 Column(
                     Modifier.weight(1f).fillMaxHeight().padding(EditorSpacing.Space32),
@@ -231,23 +235,33 @@ fun EditorContent(
                     }
                 }
                 Box(Modifier.width(EditorDimensions.BorderWidth).fillMaxHeight().background(Line))
-                Column(
+                Box(
                     Modifier.width(EditorDimensions.InspectorWidth).fillMaxHeight().background(Panel)
-                        .verticalScroll(rememberScrollState()).padding(EditorSpacing.Space24)
                 ) {
-                    when (page) {
-                        0 -> OverviewPanel(scene, status, onEdit = { page = 1 })
-                        1 -> AppearancePanel(
-                            scene, selectedLayer, { selectedLayer = it },
-                            onSceneChange = onSceneChange,
-                            onPickImage = onPickImage
-                        )
+                    Column(
+                        Modifier.fillMaxSize().verticalScroll(inspectorScroll).padding(EditorSpacing.Space24)
+                    ) {
+                        when (page) {
+                            0 -> OverviewPanel(scene, status, onEdit = { page = 1 })
+                            1 -> AppearancePanel(
+                                scene, selectedLayer, { selectedLayer = it },
+                                onSceneChange = onSceneChange,
+                                onPickImage = onPickImage
+                            )
 
-                        2 -> SettingsPanel(scene, onSceneChange = onSceneChange)
+                            2 -> SettingsPanel(scene, onSceneChange = onSceneChange)
+                        }
                     }
+                    VerticalScrollbar(
+                        adapter = rememberScrollbarAdapter(inspectorScroll),
+                        style = LocalScrollbarStyle.current.copy(
+                            unhoverColor = Muted.copy(alpha = .4f), hoverColor = Orange
+                        ),
+                        modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight().padding(EditorSpacing.Space4)
+                    )
                 }
             }
-            Divider(color = Line)
+            HorizontalDivider(color = Line)
             Row(
                 Modifier.fillMaxWidth().height(EditorDimensions.StatusBarHeight)
                     .padding(horizontal = EditorSpacing.Space24), verticalAlignment = Alignment.CenterVertically,

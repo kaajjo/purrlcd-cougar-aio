@@ -16,9 +16,9 @@ object EditorSpacing {
 object EditorDimensions {
     val WindowWidth = 1280.dp
     val WindowHeight = 850.dp
-    val InspectorWidth = 326.dp
-    val SidebarWidth = 187.dp
-    val FieldHeight = 49.dp
+    val InspectorWidth = 344.dp
+    val SidebarWidth = 224.dp
+    val FieldHeight = 56.dp
     val StatusBarHeight = 42.dp
     val ColorSwatchSize = 34.dp
     val ColorPresetSize = 22.dp

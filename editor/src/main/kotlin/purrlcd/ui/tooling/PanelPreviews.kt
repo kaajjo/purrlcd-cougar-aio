@@ -11,7 +11,7 @@ import purrlcd.ui.panels.AppearancePanel
 import purrlcd.ui.panels.OverviewPanel
 import purrlcd.ui.panels.SettingsPanel
 
-@Preview(name = "Overview", group = "Panels", widthDp = 326, heightDp = 800)
+@Preview(name = "Overview", group = "Panels", widthDp = 344, heightDp = 800)
 @Composable
 fun OverviewPanelPreview() {
     PanelPreviewFrame {
@@ -19,7 +19,7 @@ fun OverviewPanelPreview() {
     }
 }
 
-@Preview(name = "Overview · missing sensors", group = "Panels", widthDp = 326, heightDp = 800)
+@Preview(name = "Overview · missing sensors", group = "Panels", widthDp = 344, heightDp = 800)
 @Composable
 fun OverviewMissingSensorsPreview() {
     PanelPreviewFrame {
@@ -27,7 +27,7 @@ fun OverviewMissingSensorsPreview() {
     }
 }
 
-@Preview(name = "Overview · conflicting application", group = "Panels", widthDp = 326, heightDp = 800)
+@Preview(name = "Overview · conflicting application", group = "Panels", widthDp = 344, heightDp = 800)
 @Composable
 fun OverviewWarningPreview() {
     PanelPreviewFrame {
@@ -39,7 +39,7 @@ fun OverviewWarningPreview() {
     }
 }
 
-@Preview(name = "Appearance", group = "Panels", widthDp = 326, heightDp = 800)
+@Preview(name = "Appearance", group = "Panels", widthDp = 344, heightDp = 800)
 @Composable
 fun AppearancePanelPreview() {
     var scene by remember { mutableStateOf(PreviewSamples.scene) }
@@ -55,7 +55,7 @@ fun AppearancePanelPreview() {
     }
 }
 
-@Preview(name = "Settings", group = "Panels", widthDp = 326, heightDp = 800)
+@Preview(name = "Settings", group = "Panels", widthDp = 344, heightDp = 800)
 @Composable
 fun SettingsPanelPreview() {
     var scene by remember { mutableStateOf(PreviewSamples.scene) }

@@ -5,10 +5,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.Divider
-import androidx.compose.material.Slider
-import androidx.compose.material.SliderDefaults
-import androidx.compose.material.Text
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import kotlin.math.roundToInt
@@ -69,7 +69,11 @@ fun SettingsPanel(scene: Scene, onSceneChange: (Scene) -> Unit) {
         color = Muted,
         style = editorTextStyle(EditorTypography.Label)
     )
-    Spacer(Modifier.height(EditorSpacing.Space32)); Divider(color = Line); Spacer(Modifier.height(EditorSpacing.Space24))
+    Spacer(Modifier.height(EditorSpacing.Space32)); HorizontalDivider(color = Line); Spacer(
+        Modifier.height(
+            EditorSpacing.Space24
+        )
+    )
     SectionLabel(stringResource(Res.string.settings_rotation_heading))
     Spacer(Modifier.height(EditorSpacing.Space16))
     Row(horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space8)) {

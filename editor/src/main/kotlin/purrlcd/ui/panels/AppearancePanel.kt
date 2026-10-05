@@ -6,12 +6,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.Divider
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,7 +42,6 @@ import purrlcd.ui.theme.EditorSpacing
 import purrlcd.ui.theme.EditorTypography
 import purrlcd.ui.theme.Line
 import purrlcd.ui.theme.Muted
-import purrlcd.ui.theme.Orange
 import purrlcd.ui.theme.editorTextStyle
 
 @Composable
@@ -89,7 +87,11 @@ fun AppearancePanel(
         stringResource(Res.string.appearance_background_color),
         scene.backgroundColor
     ) { onSceneChange(scene.copy(backgroundColor = it)) }
-    Spacer(Modifier.height(EditorSpacing.Space24)); Divider(color = Line); Spacer(Modifier.height(EditorSpacing.Space24))
+    Spacer(Modifier.height(EditorSpacing.Space24)); HorizontalDivider(color = Line); Spacer(
+        Modifier.height(
+            EditorSpacing.Space24
+        )
+    )
     SectionLabel(stringResource(Res.string.appearance_layers_heading))
     Spacer(Modifier.height(EditorSpacing.Space16))
     Row(horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space8)) {
@@ -109,8 +111,7 @@ fun AppearancePanel(
         Text(stringResource(Res.string.appearance_show_on_screen), style = editorTextStyle(EditorTypography.Label))
         Switch(
             selected.enabled,
-            { update(selected.copy(enabled = it)) },
-            colors = SwitchDefaults.colors(checkedThumbColor = Orange, checkedTrackColor = Orange)
+            { update(selected.copy(enabled = it)) }
         )
     }
     Field(

@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -66,7 +66,12 @@ fun ScreenPreview(
     val currentLayers by rememberUpdatedState(layers)
     val editable = onSceneChange != null
     if (native != null && !editable) {
-        Image(native, stringResource(Res.string.preview_screen_description), Modifier.fillMaxSize(), contentScale = ContentScale.Fit)
+        Image(
+            native,
+            stringResource(Res.string.preview_screen_description),
+            Modifier.fillMaxSize(),
+            contentScale = ContentScale.Fit
+        )
         return
     }
 
@@ -89,7 +94,7 @@ fun ScreenPreview(
             val left = layer.x * pixelsPerScenePixel
             val top = layer.y * pixelsPerScenePixel
             layer.enabled && position.x >= left && position.x <= left + width &&
-                position.y >= top && position.y <= top + height
+                    position.y >= top && position.y <= top + height
         }
 
         // Listen on the stationary canvas so moving the text cannot shift gesture coordinates.
@@ -131,7 +136,10 @@ fun ScreenPreview(
                     drawImage(layers.background, dstSize = IntSize(size.width.roundToInt(), size.height.roundToInt()))
                     listOf(scene.cpu to layers.cpu, scene.gpu to layers.gpu).forEachIndexed { index, (layer, image) ->
                         if (layer.enabled) {
-                            val origin = IntOffset((layer.x * pixelsPerScenePixel).roundToInt(), (layer.y * pixelsPerScenePixel).roundToInt())
+                            val origin = IntOffset(
+                                (layer.x * pixelsPerScenePixel).roundToInt(),
+                                (layer.y * pixelsPerScenePixel).roundToInt()
+                            )
                             val dimensions = IntSize(
                                 (image.width * pixelsPerScenePixel).roundToInt().coerceAtLeast(1),
                                 (image.height * pixelsPerScenePixel).roundToInt().coerceAtLeast(1)
@@ -147,16 +155,27 @@ fun ScreenPreview(
                 }
             } else {
                 background?.let {
-                    Image(it, stringResource(Res.string.preview_background_description), Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                    Image(
+                        it,
+                        stringResource(Res.string.preview_background_description),
+                        Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
                 }
-                listOf(scene.cpu to status.cpuTemp, scene.gpu to status.gpuTemp).forEachIndexed { index, (layer, value) ->
+                listOf(
+                    scene.cpu to status.cpuTemp,
+                    scene.gpu to status.gpuTemp
+                ).forEachIndexed { index, (layer, value) ->
                     if (layer.enabled) {
                         val selection = if (editable && selectedLayer == index)
                             Modifier.border(EditorDimensions.BorderWidth, Orange) else Modifier
                         Text(
                             "${layer.label}  ${temp(value)}",
                             modifier = Modifier.absoluteOffset {
-                                IntOffset((layer.x * pixelsPerScenePixel).roundToInt(), (layer.y * pixelsPerScenePixel).roundToInt())
+                                IntOffset(
+                                    (layer.x * pixelsPerScenePixel).roundToInt(),
+                                    (layer.y * pixelsPerScenePixel).roundToInt()
+                                )
                             }.then(selection),
                             color = parseColor(layer.color),
                             fontSize = (layer.fontSize * scale).sp,

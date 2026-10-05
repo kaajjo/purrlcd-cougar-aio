@@ -12,7 +12,7 @@ layout.buildDirectory.set(file("../.work/editor-build/build"))
 
 dependencies {
     implementation(compose.desktop.currentOs)
-    implementation("org.jetbrains.compose.material:material:1.12.1")
+    implementation("org.jetbrains.compose.material3:material3:1.12.0-alpha03")
     implementation("org.jetbrains.compose.components:components-resources:1.12.1")
     implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.10.2")

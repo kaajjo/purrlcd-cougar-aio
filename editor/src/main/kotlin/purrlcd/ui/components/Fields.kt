@@ -13,9 +13,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -26,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import purrlcd.ui.theme.EditorDimensions
 import purrlcd.ui.theme.EditorShapes
 import purrlcd.ui.theme.EditorSpacing
@@ -51,12 +53,14 @@ fun Field(
         Text(label, color = Muted, style = editorTextStyle(EditorTypography.Caption))
         Spacer(Modifier.height(EditorSpacing.Space8))
         OutlinedTextField(
-            value, onChange, Modifier.fillMaxWidth().height(EditorDimensions.FieldHeight), singleLine = true,
+            value, onChange,
+            Modifier.fillMaxWidth().height(EditorDimensions.FieldHeight).semantics { contentDescription = label },
+            singleLine = true,
             textStyle = editorTextStyle(EditorTypography.Body), shape = EditorShapes.Field,
             keyboardOptions = KeyboardOptions(keyboardType = if (number) KeyboardType.Number else KeyboardType.Text),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                backgroundColor = Raised, focusedBorderColor = Orange,
-                unfocusedBorderColor = Line, cursorColor = Orange, textColor = Ink
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Raised, unfocusedContainerColor = Raised, focusedBorderColor = Orange,
+                unfocusedBorderColor = Line, cursorColor = Orange, focusedTextColor = Ink, unfocusedTextColor = Ink
             )
         )
     }
@@ -99,13 +103,14 @@ fun ColorField(label: String, value: String, onValue: (String) -> Unit) {
                 if (it.length <= 7) {
                     raw = it.uppercase(); if (raw.matches(Regex("#[0-9A-F]{6}"))) onValue(raw)
                 }
-            }, Modifier.weight(1f).height(EditorDimensions.FieldHeight), singleLine = true, shape = EditorShapes.Field,
+            }, Modifier.weight(1f).height(EditorDimensions.FieldHeight).semantics { contentDescription = label },
+            singleLine = true, shape = EditorShapes.Field,
             textStyle = editorTextStyle(EditorTypography.Label),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                backgroundColor = Raised,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Raised, unfocusedContainerColor = Raised,
                 focusedBorderColor = Orange,
                 unfocusedBorderColor = Line,
-                textColor = Ink
+                focusedTextColor = Ink, unfocusedTextColor = Ink
             )
         )
     }
