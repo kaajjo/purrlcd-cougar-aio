@@ -36,13 +36,11 @@ import purrlcd.resources.sidebar_engine_missing
 import purrlcd.resources.sidebar_engine_running
 import purrlcd.resources.sidebar_screen
 import purrlcd.resources.sidebar_settings
-import purrlcd.resources.sidebar_tagline
 import purrlcd.ui.theme.Bg
 import purrlcd.ui.theme.EditorDimensions
 import purrlcd.ui.theme.EditorShapes
 import purrlcd.ui.theme.EditorSpacing
 import purrlcd.ui.theme.EditorTypography
-import purrlcd.ui.theme.FaintInk
 import purrlcd.ui.theme.Good
 import purrlcd.ui.theme.Line
 import purrlcd.ui.theme.Muted
@@ -114,12 +112,6 @@ fun Sidebar(page: Int, onPage: (Int) -> Unit, ready: Boolean) {
                 style = editorTextStyle(EditorTypography.Hint)
             )
         }
-        Spacer(Modifier.height(EditorSpacing.Space8))
-        Text(
-            stringResource(Res.string.sidebar_tagline),
-            color = FaintInk,
-            style = editorTextStyle(EditorTypography.FinePrint)
-        )
     }
 }
 

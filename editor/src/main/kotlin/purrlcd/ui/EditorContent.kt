@@ -41,7 +41,6 @@ import org.jetbrains.compose.resources.stringResource
 import purrlcd.engine.EngineStatus
 import purrlcd.model.Scene
 import purrlcd.resources.Res
-import purrlcd.resources.appearance_subtitle
 import purrlcd.resources.appearance_title
 import purrlcd.resources.apply
 import purrlcd.resources.connect
@@ -53,9 +52,7 @@ import purrlcd.resources.preview_edit_hint
 import purrlcd.resources.preview_draft_hint
 import purrlcd.resources.preview_heading
 import purrlcd.resources.preview_native_hint
-import purrlcd.resources.screen_subtitle
 import purrlcd.resources.screen_title
-import purrlcd.resources.settings_subtitle
 import purrlcd.resources.settings_title
 import purrlcd.resources.stop
 import purrlcd.resources.unsaved_changes
@@ -119,16 +116,6 @@ fun EditorContent(
                                 Res.string.settings_title
                             )[page]
                         ), style = editorTextStyle(EditorTypography.Title)
-                    )
-                    Spacer(Modifier.height(EditorSpacing.Space4))
-                    Text(
-                        stringResource(
-                            listOf(
-                                Res.string.screen_subtitle,
-                                Res.string.appearance_subtitle,
-                                Res.string.settings_subtitle
-                            )[page]
-                        ), color = Muted, style = editorTextStyle(EditorTypography.Body)
                     )
                 }
                 Row(

@@ -3,9 +3,6 @@
     <string name="screen_title">Ваш экран</string>
     <string name="appearance_title">Редактор оформления</string>
     <string name="settings_title">Настройки экрана</string>
-    <string name="screen_subtitle">Маленький экран. Только нужное.</string>
-    <string name="appearance_subtitle">Создайте своё оформление, слой за слоем.</string>
-    <string name="settings_subtitle">Ритм обновления и ориентация изображения.</string>
     <string name="unsaved_changes">Есть изменения</string>
     <string name="apply">Применить</string>
     <string name="preview_heading">ПРЕДПРОСМОТР</string>
@@ -76,5 +73,4 @@
     <string name="sidebar_engine_running">Движок запущен</string>
     <string name="sidebar_screen">Экран</string>
     <string name="sidebar_settings">Настройки</string>
-    <string name="sidebar_tagline">Экран живёт своим ритмом</string>
 </resources>
