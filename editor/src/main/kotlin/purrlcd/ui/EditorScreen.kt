@@ -14,6 +14,7 @@ fun EditorScreen(client: EngineClient, startEngine: Boolean, pickImage: () -> St
         busy = state.busy,
         dirty = state.dirty,
         nativePreview = state.nativePreview,
+        nativeLayers = state.nativeLayers,
         note = state.note,
         noteIsError = state.noteIsError,
         onSave = { state.saveScene() },

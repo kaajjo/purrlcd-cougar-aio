@@ -11,6 +11,7 @@ public:
     Renderer();
     ~Renderer();
     std::vector<uint8_t> render(const Json& scene, const SensorSnapshot& values, bool overlayOnly = false);
+    std::vector<uint8_t> layer(const Json& scene, const SensorSnapshot& values, const std::string& key);
     std::vector<uint8_t> background(const Json& scene);
 private:
     ULONG_PTR token_ = 0;

@@ -94,10 +94,7 @@ std::vector<uint8_t> Renderer::background(const Json& scene) {
     Graphics g(&bitmap); drawBackground(g, scene);
     return png(bitmap);
 }
-std::vector<uint8_t> Renderer::render(const Json& scene, const SensorSnapshot& values, bool overlayOnly) {
-    Bitmap bitmap(720, 720, PixelFormat32bppARGB);
-    Graphics g(&bitmap);
-    if (overlayOnly) g.Clear(Color(0, 0, 0, 0)); else drawBackground(g, scene);
+static void drawLayers(Graphics& g, const Json& scene, const SensorSnapshot& values) {
     g.SetSmoothingMode(SmoothingModeAntiAlias);
     g.SetTextRenderingHint(TextRenderingHintAntiAliasGridFit);
     for (const auto& key : {"cpu", "gpu"}) {
@@ -116,6 +113,44 @@ std::vector<uint8_t> Renderer::render(const Json& scene, const SensorSnapshot& v
         PointF origin((REAL)layer.at("x").get<int>(), (REAL)layer.at("y").get<int>());
         g.DrawString(ws.c_str(), (INT)ws.size(), &font, origin, &format, &brush);
     }
+}
+std::vector<uint8_t> Renderer::render(const Json& scene, const SensorSnapshot& values, bool overlayOnly) {
+    Bitmap bitmap(720, 720, PixelFormat32bppARGB);
+    Graphics g(&bitmap);
+    if (overlayOnly) g.Clear(Color(0, 0, 0, 0)); else drawBackground(g, scene);
+    drawLayers(g, scene, values);
     return png(bitmap);
 }
+std::vector<uint8_t> Renderer::layer(const Json& scene, const SensorSnapshot& values, const std::string& key) {
+    auto isolated = scene;
+    for (const auto& name : {"cpu", "gpu"}) {
+        isolated[name]["enabled"] = key == name;
+        isolated[name]["x"] = 0;
+        isolated[name]["y"] = 0;
+    }
+    Bitmap bitmap(720, 720, PixelFormat32bppARGB);
+    {
+        Graphics g(&bitmap);
+        g.Clear(Color(0, 0, 0, 0));
+        drawLayers(g, isolated, values);
+    }
+    // Retain transparent top/left padding: image (0,0) must equal the text origin.
+    Rect area(0, 0, 720, 720);
+    BitmapData data{};
+    if (bitmap.LockBits(&area, ImageLockModeRead, PixelFormat32bppARGB, &data) != Ok)
+        throw std::runtime_error("Cannot read text layer pixels");
+    int width = 1, height = 1;
+    for (int y = 0; y < 720; ++y) {
+        const auto* row = static_cast<const BYTE*>(data.Scan0) + y * data.Stride;
+        for (int x = 0; x < 720; ++x) if (row[x * 4 + 3]) {
+            width = std::max(width, x + 1);
+            height = std::max(height, y + 1);
+        }
+    }
+    bitmap.UnlockBits(&data);
+    std::unique_ptr<Bitmap> cropped(bitmap.Clone(0, 0, width, height, PixelFormat32bppARGB));
+    if (!cropped || cropped->GetLastStatus() != Ok) throw std::runtime_error("Cannot crop text layer");
+    return png(*cropped);
+}
+
 }

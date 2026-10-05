@@ -22,6 +22,9 @@ data class EngineReply(
     val scene: Scene? = null,
     val status: EngineStatus? = null,
     val previewPath: String? = null,
+    val previewBackgroundPath: String? = null,
+    val previewCpuPath: String? = null,
+    val previewGpuPath: String? = null,
     val message: String? = null,
     val error: String? = null
 )

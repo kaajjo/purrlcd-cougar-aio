@@ -10,6 +10,7 @@
     <string name="apply">Apply</string>
     <string name="preview_heading">PREVIEW</string>
     <string name="preview_native_hint">Engine image · scaled to fit the preview</string>
+    <string name="preview_native_edit_hint">Engine image · drag CPU/GPU text to move it</string>
     <string name="preview_edit_hint">Draft · drag CPU/GPU text to move it</string>
     <string name="preview_draft_hint">Draft · start the engine for an accurate preview</string>
     <string name="display_connecting">Connecting to the display…</string>

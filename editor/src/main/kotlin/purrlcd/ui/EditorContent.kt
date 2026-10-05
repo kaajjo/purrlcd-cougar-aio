@@ -45,6 +45,7 @@ import purrlcd.resources.connect
 import purrlcd.resources.display_connecting
 import purrlcd.resources.display_running
 import purrlcd.resources.display_stopped
+import purrlcd.resources.preview_native_edit_hint
 import purrlcd.resources.preview_edit_hint
 import purrlcd.resources.preview_draft_hint
 import purrlcd.resources.preview_heading
@@ -61,6 +62,7 @@ import purrlcd.ui.components.Tag
 import purrlcd.ui.panels.AppearancePanel
 import purrlcd.ui.panels.OverviewPanel
 import purrlcd.ui.panels.SettingsPanel
+import purrlcd.ui.preview.NativePreviewLayers
 import purrlcd.ui.preview.ScreenPreview
 import purrlcd.ui.theme.Bg
 import purrlcd.ui.theme.EditorDimensions
@@ -91,6 +93,7 @@ fun EditorContent(
     onToggleConnection: () -> Unit,
     onSceneChange: (Scene) -> Unit,
     onPickImage: () -> Unit,
+    nativeLayers: NativePreviewLayers? = null,
     initialPage: Int = 0
 ) {
     var page by remember { mutableStateOf(initialPage) }
@@ -175,6 +178,7 @@ fun EditorContent(
                         ) {
                             ScreenPreview(
                                 scene, status, nativePreview,
+                                nativeLayers = nativeLayers,
                                 selectedLayer = selectedLayer,
                                 onSelectLayer = { selectedLayer = it },
                                 onSceneChange = if (page == 1) onSceneChange else null
@@ -182,7 +186,8 @@ fun EditorContent(
                         }
                     }
                     Text(
-                        if (page == 1) stringResource(Res.string.preview_edit_hint)
+                        if (page == 1 && nativeLayers?.matches(scene) == true) stringResource(Res.string.preview_native_edit_hint)
+                        else if (page == 1) stringResource(Res.string.preview_edit_hint)
                         else if (nativePreview != null) stringResource(Res.string.preview_native_hint) else stringResource(
                             Res.string.preview_draft_hint
                         ), color = Muted, style = editorTextStyle(EditorTypography.Caption)

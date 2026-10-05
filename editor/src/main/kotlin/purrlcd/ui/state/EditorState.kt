@@ -40,6 +40,8 @@ import purrlcd.resources.engine_unavailable
 import purrlcd.resources.preview_failed
 import purrlcd.resources.scene_saved
 import purrlcd.ui.preview.loadImage
+import purrlcd.ui.preview.NativePreviewLayers
+import kotlinx.coroutines.CancellationException
 
 @Stable
 class EditorState(
@@ -59,6 +61,8 @@ class EditorState(
     var busy by mutableStateOf(false)
         private set
     var nativePreview by mutableStateOf<ImageBitmap?>(null)
+        private set
+    var nativeLayers by mutableStateOf<NativePreviewLayers?>(null)
         private set
     var note by mutableStateOf(initialNote)
         private set
@@ -145,20 +149,36 @@ class EditorState(
     }
 
     suspend fun updatePreview() {
-        if (!initialized || !ready) { nativePreview = null; return }
+        if (!initialized || !ready) { nativePreview = null; nativeLayers = null; return }
         delay(250)
-        runCatching { client.request("preview", scene) }.onSuccess { reply ->
+        val requestedScene = scene
+        try {
+            val reply = client.request("preview", requestedScene)
             if (reply.ok) {
-                reply.previewPath?.let { path ->
-                    nativePreview = withContext(Dispatchers.IO) { loadImage(path) }
+                val images = withContext(Dispatchers.IO) {
+                    val full = reply.previewPath?.let(::loadImage)
+                    val background = reply.previewBackgroundPath?.let(::loadImage)
+                    val cpu = reply.previewCpuPath?.let(::loadImage)
+                    val gpu = reply.previewGpuPath?.let(::loadImage)
+                    full to if (background != null && cpu != null && gpu != null)
+                        NativePreviewLayers(requestedScene, background, cpu, gpu) else null
                 }
+                nativePreview = images.first
+                nativeLayers = images.second
             } else {
                 nativePreview = null
+                nativeLayers = null
                 note = reply.error ?: reply.message ?: getString(Res.string.preview_failed)
                 noteIsError = true
             }
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (_: Exception) {
+            nativePreview = null
+            nativeLayers = null
         }
     }
+
 }
 
 @Composable

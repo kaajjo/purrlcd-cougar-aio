@@ -10,6 +10,7 @@
     <string name="apply">Применить</string>
     <string name="preview_heading">ПРЕДПРОСМОТР</string>
     <string name="preview_native_hint">Изображение от движка · масштабировано для просмотра</string>
+    <string name="preview_native_edit_hint">Изображение от движка · перетащите текст CPU/GPU для перемещения</string>
     <string name="preview_edit_hint">Макет · перетащите текст CPU/GPU для перемещения</string>
     <string name="preview_draft_hint">Макет · точный предпросмотр появится при запуске движка</string>
     <string name="display_connecting">Подключаем экран…</string>

@@ -73,6 +73,16 @@ if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать прове�
 & $testExe
 if ($LASTEXITCODE -ne 0) { throw 'Проверки протокола не прошли.' }
 
+Write-Host 'Проверка совпадения слоёв превью с отрисовкой экрана…'
+$sceneTestExe = Join-Path $nativeBuild 'scene_test.exe'
+& $clangPath -std=c++17 -O2 -static -DUNICODE -D_UNICODE -DNOMINMAX `
+    (Join-Path $engineSource 'scene_test.cpp') (Join-Path $engineSource 'scene.cpp') `
+    -lgdiplus -lole32 -o $sceneTestExe
+if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать проверки отрисовки.' }
+& $sceneTestExe
+if ($LASTEXITCODE -ne 0) { throw 'Проверки отрисовки не прошли.' }
+
+
 if (-not $SkipEditor) {
     if (-not (Get-Command java -CommandType Application -ErrorAction SilentlyContinue)) {
         throw 'Для сборки редактора установите JDK 21 и добавьте java в PATH.'

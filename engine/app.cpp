@@ -233,6 +233,14 @@ Json handleRequest(const Json& request, Renderer& renderer) {
         auto file = dataPath / (L"preview-" + std::to_wstring(++counter % 3) + L".png");
         atomicWrite(file, renderer.render(scene, values));
         response["previewPath"] = utf8(file.wstring()); response["revision"] = counter;
+        auto backgroundFile = dataPath / (L"preview-background-" + std::to_wstring(counter % 3) + L".png");
+        atomicWrite(backgroundFile, renderer.background(scene));
+        response["previewBackgroundPath"] = utf8(backgroundFile.wstring());
+        for (const auto& key : {"cpu", "gpu"}) {
+            auto layerFile = dataPath / (L"preview-" + wide(key) + L"-" + std::to_wstring(counter % 3) + L".png");
+            atomicWrite(layerFile, renderer.layer(scene, values, key));
+            response[std::string("preview") + (std::string(key) == "cpu" ? "Cpu" : "Gpu") + "Path"] = utf8(layerFile.wstring());
+        }
         response["status"] = snapshotStatus();
     } else if (command == "connect") {
         bool stock = stockEditorRunning();
