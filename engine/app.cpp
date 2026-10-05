@@ -30,7 +30,7 @@ struct State {
     bool connected = false, wanted = false, stockRunning = false;
     unsigned long sceneRevision = 1;
     uint64_t framesSent = 0, lastFrameMs = 0;
-    std::string message = "Готов к настройке";
+    std::string message = "Ready to configure";
     std::string deviceInfo;
     fs::path previewPath;
 } state;
@@ -127,7 +127,7 @@ void worker() {
                 if (stock && display.isOpen()) {
                     display.close(); configuredRevision = 0; lastKey.clear();
                     state.connected = false; state.wanted = wanted = false;
-                    state.message = "Передача остановлена: запущен COUGAR LCD Editor";
+                    state.message = "Transfer stopped: COUGAR LCD Editor is running";
                 }
                 lastStockCheck = now;
             }
@@ -139,29 +139,29 @@ void worker() {
             if (!wanted && display.isOpen()) {
                 display.close(); configuredRevision = 0; lastKey.clear();
                 std::lock_guard<std::mutex> lock(state.mutex);
-                state.connected = false; state.message = "Передача остановлена";
+                state.connected = false; state.message = "Transfer stopped";
             }
             if (wanted && !display.isOpen() && now >= retryAt) {
                 if (stockEditorRunning()) {
                     std::lock_guard<std::mutex> lock(state.mutex);
                     state.stockRunning = true; state.wanted = false;
-                    state.message = "Заверши COUGAR LCD Editor через его меню в трее, затем подключи экран";
+                    state.message = "Exit COUGAR LCD Editor from its system tray menu, then connect the display";
                 } else {
                     try {
                         Json info = display.open();
                         { std::lock_guard<std::mutex> lock(state.mutex);
-                          state.deviceInfo = info.dump(); state.message = "Подготавливаю экран…"; }
+                          state.deviceInfo = info.dump(); state.message = "Preparing display..."; }
                         display.configure(renderer.background(scene), scene["rotation"].get<int>());
                         configuredRevision = revision; lastKey.clear();
                         std::lock_guard<std::mutex> lock(state.mutex);
-                        state.connected = true; state.message = "Экран подключён";
+                        state.connected = true; state.message = "Display connected";
                         atomicWriteJson(dataPath / L"agent.json", {{"connectOnStartup", true}});
                         logEvent("LCD connected.");
                     } catch (const std::exception& e) {
                         display.close(); retryAt = now + 10000;
                         std::lock_guard<std::mutex> lock(state.mutex);
                         if (dynamic_cast<const std::invalid_argument*>(&e)) state.wanted = false;
-                        state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · повтор через 10 секунд" : "");
+                        state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · retrying in 10 seconds" : "");
                         logEvent(std::string("LCD connection: ") + e.what());
                     }
                 }
@@ -176,8 +176,7 @@ void worker() {
                         configuredRevision = revision; lastKey.clear();
                     }
                     auto key = visualKey(scene, values);
-                    // The device advertises a 60-second timeout. Refresh a still frame at 20 s
-                    // until a cheaper dedicated keepalive has been verified on hardware.
+                    // Refresh unchanged frames every 20 seconds to prevent the device's 60-second timeout.
                     if (key != lastKey || now - lastKeepalive >= 20000) {
                         display.overlay(renderer.render(scene, values, true));
                         lastKey = key; lastKeepalive = now;
@@ -188,7 +187,7 @@ void worker() {
                     display.close(); retryAt = GetTickCount64() + 10000;
                     std::lock_guard<std::mutex> lock(state.mutex);
                     if (dynamic_cast<const std::invalid_argument*>(&e)) state.wanted = false;
-                    state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · повтор через 10 секунд" : "");
+                    state.connected = false; state.message = std::string(e.what()) + (state.wanted ? " · retrying in 10 seconds" : "");
                     logEvent(std::string("LCD transfer: ") + e.what());
                 }
             }
@@ -239,8 +238,8 @@ Json handleRequest(const Json& request, Renderer& renderer) {
         bool stock = stockEditorRunning();
         { std::lock_guard<std::mutex> lock(state.mutex);
           state.stockRunning = stock;
-          if (stock) throw std::runtime_error("Заверши COUGAR LCD Editor через его меню в трее перед подключением");
-          state.wanted = true; state.message = "Подключаю экран…"; }
+          if (stock) throw std::runtime_error("Exit COUGAR LCD Editor from its system tray menu before connecting");
+          state.wanted = true; state.message = "Connecting to display..."; }
         SetEvent(wakeEvent); response["status"] = snapshotStatus();
     } else if (command == "disconnect") {
         atomicWriteJson(dataPath / L"agent.json", {{"connectOnStartup", false}});
@@ -339,19 +338,18 @@ void pipeServer() {
 
 void launchEditor() {
     if (!fs::exists(editorPath)) {
-        MessageBoxW(appWindow, L"Редактор не найден рядом с приложением. Запусти PurrLCDEditor.exe из папки editor.", L"PurrLCD", MB_OK | MB_ICONINFORMATION);
+        MessageBoxW(appWindow, L"Editor not found next to the application. Run PurrLCDEditor.exe from the editor folder.", L"PurrLCD", MB_OK | MB_ICONINFORMATION);
         return;
     }
     auto args = L"--engine \"" + exePath.wstring() + L"\" --data \"" + dataPath.wstring() + L"\"";
     std::wstring error;
     if (!launchUnelevated(editorPath.wstring(), args, editorPath.parent_path().wstring(), &error)) {
         logEvent("Cannot launch editor: " + utf8(error));
-        MessageBoxW(appWindow, (L"Не удалось открыть редактор. Запусти PurrLCDEditor.exe вручную.\n" + error).c_str(), L"PurrLCD", MB_OK | MB_ICONINFORMATION);
+        MessageBoxW(appWindow, (L"Could not open the editor. Run PurrLCDEditor.exe manually.\n" + error).c_str(), L"PurrLCD", MB_OK | MB_ICONINFORMATION);
     }
 }
 
 HICON createTrayIcon() {
-    // Native vector-style mark; no browser or UI runtime needed for the tray.
     constexpr int n = 32;
     BITMAPV5HEADER h{}; h.bV5Size = sizeof(h); h.bV5Width = n; h.bV5Height = -n;
     h.bV5Planes = 1; h.bV5BitCount = 32; h.bV5Compression = BI_BITFIELDS;
@@ -379,10 +377,10 @@ LRESULT CALLBACK windowProc(HWND h, UINT msg, WPARAM wp, LPARAM lp) {
         if (LOWORD(lp) == WM_LBUTTONDBLCLK || LOWORD(lp) == NIN_SELECT) launchEditor();
         if (LOWORD(lp) == WM_RBUTTONUP || LOWORD(lp) == WM_CONTEXTMENU) {
             HMENU menu = CreatePopupMenu();
-            AppendMenuW(menu, MF_STRING, OPEN_EDITOR, L"Открыть редактор");
-            AppendMenuW(menu, MF_STRING, PAUSE_SCREEN, L"Остановить передачу");
+            AppendMenuW(menu, MF_STRING, OPEN_EDITOR, L"Open editor");
+            AppendMenuW(menu, MF_STRING, PAUSE_SCREEN, L"Stop transfer");
             AppendMenuW(menu, MF_SEPARATOR, 0, nullptr);
-            AppendMenuW(menu, MF_STRING, EXIT_APP, L"Завершить PurrLCD");
+            AppendMenuW(menu, MF_STRING, EXIT_APP, L"Exit PurrLCD");
             POINT p{}; GetCursorPos(&p); SetForegroundWindow(h);
             TrackPopupMenu(menu, TPM_RIGHTBUTTON, p.x, p.y, 0, h, nullptr);
             DestroyMenu(menu); PostMessageW(h, WM_NULL, 0, 0);
@@ -463,7 +461,7 @@ int wmain(int argc, wchar_t** argv) {
         if (!appWindow) throw std::runtime_error("Cannot create tray window");
         NOTIFYICONDATAW tray{}; tray.cbSize = sizeof(tray); tray.hWnd = appWindow; tray.uID = 1;
         tray.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP; tray.uCallbackMessage = TRAY_MESSAGE;
-        tray.hIcon = createTrayIcon(); wcscpy_s(tray.szTip, L"PurrLCD — редактор по двойному щелчку");
+        tray.hIcon = createTrayIcon(); wcscpy_s(tray.szTip, L"PurrLCD — double-click to open the editor");
         trayData = tray;
         Shell_NotifyIconW(NIM_ADD, &tray);
         std::thread sensorThread(worker), ipcThread(pipeServer);

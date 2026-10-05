@@ -3,8 +3,10 @@
 /.tools/
 /.local/
 /dist/
-/.idea/
-/.vscode/
+.idea/
+.vscode/
+*.iml
+local.properties
 *.user
 *.log
 *.tmp

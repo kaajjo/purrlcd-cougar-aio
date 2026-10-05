@@ -2,6 +2,27 @@
 
 Редактор Compose Desktop запускается отдельно от C++-движка. Закрытие окна полностью завершает JVM; фоновый движок и экран продолжают работу.
 
+## Структура Kotlin-кода
+
+```text
+purrlcd/
+  Main.kt                 создание окна и завершение приложения
+  app/                    параметры запуска и системный выбор изображения
+  model/                  сериализуемая сцена и текстовые слои
+  engine/                 клиент именованного канала и сообщения движка
+  ui/
+    EditorScreen.kt       подключение состояния к интерфейсу
+    EditorContent.kt      компоновка и выбор раздела без обращения к движку
+    state/                состояние редактора, действия, опрос и предпросмотр
+    panels/               обзор, оформление и настройки экрана
+    components/           навигация, карточки, поля и общие элементы
+    preview/              загрузка изображений и отрисовка предпросмотра
+    theme/                палитра, тема и форматирование значений
+    tooling/              IDE-превью на демонстрационных данных
+```
+
+Панели получают данные и обработчики изменений; к движку они напрямую не обращаются. `rememberEditorState` привязывает опрос и обновление предпросмотра к жизни экрана. EditorContent получает состояние и обработчики отдельно от EditorScreen: его можно отрисовать без клиента и фоновых задач. Клиент IPC закрывается при завершении окна в `Main.kt`.
+
 ## Сборка
 
 Требуется Java 21. Gradle 9.6 загружается комплектным wrapper при первой сборке. Из этой папки:
@@ -34,3 +55,26 @@ IPC использует именованный канал Windows `PurrLCD-<и�
 Зависимости: [Compose 1.12.1](https://github.com/JetBrains/compose-multiplatform/releases), Kotlin 2.4.20, kotlinx.coroutines 1.10.2, kotlinx.serialization 1.9.0. Упаковка — [официальный Compose Gradle plugin](https://kotlinlang.org/docs/multiplatform/compose-native-distribution.html).
 
 Gradle wrapper распространяется по Apache-2.0. Исходные уведомления сохранены в скриптах; полные [LICENSE](gradle/wrapper/GRADLE-LICENSE) и [NOTICE](gradle/wrapper/GRADLE-NOTICE) скопированы из официального дистрибутива Gradle 9.6.0. Лицензии зависимостей и Java runtime не заменяются лицензией проекта.
+
+## Превью в IDE
+
+В `ui/tooling` находятся функции с `@Preview` для трёх разделов окна, отдельных панелей, навигации, карточек, полей и макета LCD. Они используют тему PurrLCD и демонстрационные данные, не создают EngineClient и не запускают движок. Пустой путь фона исключает чтение пользовательских изображений.
+
+Используется `androidx.compose.ui.tooling.preview.Preview` из `org.jetbrains.compose.ui:ui-tooling-preview:1.12.1`. После Gradle Sync откройте preview-функцию в IDE с поддержкой Compose Desktop previews / Kotlin Multiplatform plugin. Самой аннотации недостаточно: доступность окна Preview зависит от версии и плагинов IDE. Добавлять Android target для сборки этого desktop-приложения не требуется.
+
+## Строки и локализация
+
+Тексты редактора находятся в `src/main/composeResources`:
+
+- `values/strings.xml` — английский, он же резервный язык;
+- `values-ru/strings.xml` — русский.
+
+Compose Resources генерирует `purrlcd.resources.Res` и типизированные имена строк. В Compose используйте `stringResource(Res.string.apply)`, в suspend-функциях — `getString(Res.string.scene_saved)`. Для параметров: XML `%1$d s`, Kotlin `stringResource(Res.string.duration_seconds, seconds)`. Формы множественного числа при необходимости объявляйте через `<plurals>` и читайте через `pluralStringResource`.
+
+Язык выбирается по системной локали JVM при запуске. Для нового перевода добавьте `values-<код языка>/strings.xml` с теми же ключами. Пока переключателя языка в настройках нет; пользовательские подписи слоёв и имена файлов не переводятся. Диагностические сообщения, приходящие из C++, показываются как получены. Для их полной локализации нужно возвращать коды сообщений и параметры вместо готового текста.
+
+Если позже добавляется переключение языка без перезапуска, состояние редактора нужно сохранять выше пересоздаваемой локализованной части UI, а сообщения состояния хранить как ключи ресурсов с аргументами. Иначе смена языка может сбросить несохранённые изменения или оставить старый перевод в строке состояния.
+
+Тест StringResourcesTest проверяет загрузку реальных ресурсов, русский и английский переводы, подстановку параметров и возврат к английскому для неподдерживаемого языка.
+
+Документация: [Compose Resources](https://kotlinlang.org/docs/multiplatform/compose-multiplatform-resources-setup.html), [строки и plurals](https://kotlinlang.org/docs/multiplatform/compose-multiplatform-resources-usage.html), [окружение и язык](https://kotlinlang.org/docs/multiplatform/compose-resource-environment.html).

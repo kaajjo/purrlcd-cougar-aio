@@ -1,14 +1,15 @@
-package purrlcd
+package purrlcd.engine
 
-import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.net.SocketTimeoutException
-import java.util.UUID
 import java.util.Base64
+import java.util.UUID
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
+import kotlinx.coroutines.runBlocking
+import purrlcd.model.Scene
 
 class EngineClientTest {
     private class MockPipe(stall: Boolean) : AutoCloseable {

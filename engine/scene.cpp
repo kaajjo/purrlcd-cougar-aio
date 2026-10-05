@@ -28,12 +28,12 @@ Json validateScene(const Json& input) {
     auto p = out.at("backgroundPath").get<std::string>();
     if (p.size() > 32700) throw std::runtime_error("Background path is too long");
     if (!p.empty() && (!fs::is_regular_file(wide(p)) || fs::file_size(wide(p)) > 20 * 1024 * 1024))
-        throw std::runtime_error("Фоновое изображение не найдено или больше 20 МБ");
+        throw std::runtime_error("Background image not found or exceeds 20 MB");
     if (!validColor(out.at("backgroundColor").get<std::string>())) throw std::runtime_error("Invalid background color");
     int rotation = out.at("rotation").get<int>();
     if (rotation != 0 && rotation != 90 && rotation != 180 && rotation != 270) throw std::runtime_error("Invalid rotation");
     int interval = out.at("intervalMs").get<int>();
-    if (interval < 1000 || interval > 5000) throw std::runtime_error("Интервал должен быть от 1 до 5 секунд");
+    if (interval < 1000 || interval > 5000) throw std::runtime_error("Interval must be between 1 and 5 seconds");
     for (const auto& k : {"cpu", "gpu"}) {
         if (input.contains(k)) {
             if (!input[k].is_object()) throw std::runtime_error("Invalid text layer");
@@ -63,7 +63,6 @@ Renderer::Renderer() {
 }
 Renderer::~Renderer() { if (token_) GdiplusShutdown(token_); }
 static std::vector<uint8_t> png(Bitmap& bitmap) {
-    // The PNG encoder CLSID is part of the Windows GDI+ API.
     const CLSID pngEncoder = {0x557cf406, 0x1a04, 0x11d3, {0x9a,0x73,0x00,0x00,0xf8,0x1e,0xf3,0x2e}};
     IStream* stream = nullptr;
     if (FAILED(CreateStreamOnHGlobal(nullptr, TRUE, &stream))) throw std::runtime_error("Cannot allocate PNG stream");
@@ -82,9 +81,9 @@ static void drawBackground(Graphics& g, const Json& scene) {
     if (path.empty()) return;
     Image image(wide(path).c_str(), FALSE);
     if (image.GetLastStatus() != Ok || !image.GetWidth() || !image.GetHeight())
-        throw std::runtime_error("Не удалось прочитать фоновое изображение");
+        throw std::runtime_error("Could not read background image");
     if ((uint64_t)image.GetWidth() * image.GetHeight() > 32000000)
-        throw std::runtime_error("Изображение слишком большое: максимум 32 мегапикселя");
+        throw std::runtime_error("Image is too large: maximum 32 megapixels");
     double w = image.GetWidth(), h = image.GetHeight();
     double side = std::min(w, h);
     g.SetInterpolationMode(InterpolationModeHighQualityBicubic);

@@ -12,10 +12,17 @@ layout.buildDirectory.set(file("../.work/editor-build/build"))
 
 dependencies {
     implementation(compose.desktop.currentOs)
-    implementation(compose.material)
+    implementation("org.jetbrains.compose.material:material:1.12.1")
+    implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+    implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.10.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     testImplementation(kotlin("test"))
+}
+
+compose.resources {
+    packageOfResClass = "purrlcd.resources"
+    publicResClass = true
 }
 
 compose.desktop {

@@ -34,7 +34,7 @@ struct HidDisplay::Impl {
     }
     DWORD io(Bytes& bytes, bool write, DWORD timeout) {
         if (stopEvent && WaitForSingleObject(stopEvent, 0) == WAIT_OBJECT_0)
-            throw std::runtime_error("Передача остановлена");
+            throw std::runtime_error("Transfer stopped");
         OVERLAPPED op{}; op.hEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
         if (!op.hEvent) throw std::runtime_error("Cannot create USB event");
         DWORD count = 0;
@@ -54,7 +54,7 @@ struct HidDisplay::Impl {
         }
         CloseHandle(op.hEvent);
         if (!ok) throw std::runtime_error("USB: " + errorText(error));
-        if (!count || (write && count != bytes.size())) throw std::runtime_error("Неполная передача USB");
+        if (!count || (write && count != bytes.size())) throw std::runtime_error("Incomplete USB transfer");
         return count;
     }
     void write(const Bytes& payload) {
@@ -67,19 +67,19 @@ struct HidDisplay::Impl {
             if (now >= deadline) break;
             Bytes report(inputBytes);
             DWORD count = io(report, false, (DWORD)(deadline - now));
-            if (count < 2 || report[0] != 0) throw std::runtime_error("Неожиданный HID report ID");
+            if (count < 2 || report[0] != 0) throw std::runtime_error("Unexpected HID report ID");
             report.erase(report.begin()); report.resize(count - 1);
             auto result = decodeResponse(report);
             if (result.ackNumber != ack) continue; // A delayed response from an earlier transaction.
-            if (!result.success()) throw std::invalid_argument("Экран отклонил команду: " + std::to_string(result.code) + " " + result.body);
+            if (!result.success()) throw std::invalid_argument("Display rejected command: " + std::to_string(result.code) + " " + result.body);
             if (!result.body.empty()) {
                 auto body = Json::parse(result.body);
                 if (body.contains("state") && body["state"] != "success")
-                    throw std::runtime_error("Ошибка экрана: " + result.body);
+                    throw std::runtime_error("Display error: " + result.body);
             }
             return result;
         } while (GetTickCount64() < deadline);
-        throw std::runtime_error("Нет подтверждения от экрана");
+        throw std::runtime_error("No acknowledgement from display");
     }
     Json command(const std::string& name, const Json& body = Json()) {
         auto now = (uint64_t)std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -101,7 +101,7 @@ struct HidDisplay::Impl {
         auto blocks = makeFileBlocks(bytes, blockSize, outputBytes, 255, 1);
         auto deadline = GetTickCount64() + 30000;
         for (const auto& block : blocks) {
-            if (GetTickCount64() >= deadline) throw std::runtime_error("Истекло время передачи изображения");
+            if (GetTickCount64() >= deadline) throw std::runtime_error("Image transfer timed out");
             write(block);
         }
         try { response(0, 10000); }
@@ -117,10 +117,10 @@ bool HidDisplay::isOpen() const { return impl_->handle != INVALID_HANDLE_VALUE; 
 void HidDisplay::close() { impl_->close(); }
 Json HidDisplay::open() {
     close();
-    if (stockEditorRunning()) throw std::runtime_error("Сначала заверши COUGAR LCD Editor");
+    if (stockEditorRunning()) throw std::runtime_error("Exit COUGAR LCD Editor first");
     GUID guid; HidD_GetHidGuid(&guid);
     HDEVINFO devices = SetupDiGetClassDevsW(&guid, nullptr, nullptr, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
-    if (devices == INVALID_HANDLE_VALUE) throw std::runtime_error("Не удалось найти USB-устройства");
+    if (devices == INVALID_HANDLE_VALUE) throw std::runtime_error("Could not enumerate USB devices");
     SP_DEVICE_INTERFACE_DATA interfaceData{}; interfaceData.cbSize = sizeof(interfaceData);
     for (DWORD index = 0; SetupDiEnumDeviceInterfaces(devices, nullptr, &guid, index, &interfaceData); ++index) {
         DWORD needed = 0;
@@ -148,7 +148,7 @@ Json HidDisplay::open() {
         }
     }
     SetupDiDestroyDeviceInfoList(devices);
-    if (!isOpen()) throw std::runtime_error("Экран COUGAR 1D6B:0110 не найден или занят");
+    if (!isOpen()) throw std::runtime_error("COUGAR 1D6B:0110 display not found or in use");
     try {
         impl_->sequence = 0;
         HidD_FlushQueue(impl_->handle);
@@ -159,14 +159,14 @@ Json HidDisplay::open() {
     } catch (...) { close(); throw; }
 }
 void HidDisplay::configure(const Bytes& background, int rotation) {
-    if (!isOpen()) throw std::runtime_error("Экран не подключён");
+    if (!isOpen()) throw std::runtime_error("Display not connected");
     if (rotation != impl_->deviceRotation) {
         impl_->command("rotate", {{"degree", rotation}}); impl_->deviceRotation = rotation;
     }
     if (background != impl_->previousBackground) { impl_->file(background, ".png"); impl_->previousBackground = background; }
 }
 void HidDisplay::overlay(const Bytes& png) {
-    if (!isOpen()) throw std::runtime_error("Экран не подключён");
+    if (!isOpen()) throw std::runtime_error("Display not connected");
     impl_->file(png, ".osd");
 }
 }

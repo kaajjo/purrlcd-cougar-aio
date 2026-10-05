@@ -1,74 +1,33 @@
-package purrlcd
+package purrlcd.engine
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
-import java.io.RandomAccessFile
 import java.io.FileNotFoundException
 import java.io.IOException
+import java.io.RandomAccessFile
+import java.net.SocketTimeoutException
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.Future
 import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
-import java.net.SocketTimeoutException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-
-@Serializable
-data class TextLayer(
-    val enabled: Boolean = true,
-    val x: Int = 40,
-    val y: Int = 570,
-    val fontSize: Int = 44,
-    val color: String = "#FFFFFF",
-    val label: String = "CPU"
-)
-
-@Serializable
-data class Scene(
-    val backgroundPath: String = "",
-    val backgroundColor: String = "#111318",
-    val rotation: Int = 180,
-    val intervalMs: Int = 1000,
-    val cpu: TextLayer = TextLayer(),
-    val gpu: TextLayer = TextLayer(y = 630, label = "GPU")
-)
-
-@Serializable
-data class EngineStatus(
-    val connected: Boolean = false,
-    val stockRunning: Boolean = false,
-    val cpuTemp: Double? = null,
-    val gpuTemp: Double? = null,
-    val cpuUsage: Double = 0.0,
-    val ramPercent: Double = 0.0,
-    val message: String = "",
-    val sensorStatus: String = "",
-    val connecting: Boolean = false
-)
-
-@Serializable
-data class EngineReply(
-    val ok: Boolean = false,
-    val scene: Scene? = null,
-    val status: EngineStatus? = null,
-    val previewPath: String? = null,
-    val message: String? = null,
-    val error: String? = null
-)
-
-@Serializable
-private data class EngineRequest(val command: String, val scene: Scene? = null)
-
-data class EngineStartup(val ready: Boolean, val message: String)
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.getString
+import purrlcd.model.Scene
+import purrlcd.resources.Res
+import purrlcd.resources.engine_connected
+import purrlcd.resources.engine_not_found
+import purrlcd.resources.engine_start_cancelled
+import purrlcd.resources.engine_start_exit
+import purrlcd.resources.engine_waiting_permission
 
 class EngineClient(private val enginePath: File?, private val dataPath: File,
                    pipeName: String = "PurrLCD-${System.getProperty("user.name")}") : AutoCloseable {
@@ -82,7 +41,7 @@ class EngineClient(private val enginePath: File?, private val dataPath: File,
     private val requestLock = Mutex()
 
     suspend fun request(command: String, scene: Scene? = null): EngineReply = requestLock.withLock {
-        check(!closed.get()) { "Редактор закрыт" }
+        check(!closed.get()) { "Editor is closed" }
         exchange(command, scene)
     }
 
@@ -100,7 +59,7 @@ class EngineClient(private val enginePath: File?, private val dataPath: File,
         }
         val timeout = timer.schedule({
             if (done.compareAndSet(false, true)) {
-                continuation.resumeWithException(SocketTimeoutException("Движок не ответил за 3 секунды"))
+                continuation.resumeWithException(SocketTimeoutException("Engine did not respond within 3 seconds"))
                 abort()
             }
         }, 3000, TimeUnit.MILLISECONDS)
@@ -118,17 +77,17 @@ class EngineClient(private val enginePath: File?, private val dataPath: File,
                         Thread.sleep(20)
                     }
                 }
-                val file = opened ?: throw IOException("Запрос отменён")
+                val file = opened ?: throw IOException("Request cancelled")
                 handle.set(file)
                 handles.add(file)
-                if (done.get() || closed.get()) { file.close(); error("Запрос отменён") }
+                if (done.get() || closed.get()) { file.close(); error("Request cancelled") }
                 val reply = file.use {
                     val body = json.encodeToString(EngineRequest(command, scene)).toByteArray(Charsets.UTF_8)
                     require(body.size <= 1_048_576)
                     it.writeInt(Integer.reverseBytes(body.size))
                     it.write(body)
                     val size = Integer.reverseBytes(it.readInt())
-                    require(size in 1..1_048_576) { "Некорректный ответ движка" }
+                    require(size in 1..1_048_576) { "Invalid engine response" }
                     val response = ByteArray(size)
                     it.readFully(response)
                     json.decodeFromString<EngineReply>(response.toString(Charsets.UTF_8))
@@ -146,9 +105,9 @@ class EngineClient(private val enginePath: File?, private val dataPath: File,
     }
 
     suspend fun ensureStarted(): EngineStartup {
-        if (runCatching { request("status").ok }.getOrDefault(false)) return EngineStartup(true, "Движок подключён")
+        if (runCatching { request("status").ok }.getOrDefault(false)) return EngineStartup(true, getString(Res.string.engine_connected))
         val executable = enginePath?.takeIf { it.isFile }
-            ?: return EngineStartup(false, "Движок не найден. Запустите PurrLCD из полной папки приложения.")
+            ?: return EngineStartup(false, getString(Res.string.engine_not_found))
         val process = withContext(Dispatchers.IO) {
             dataPath.mkdirs()
             ProcessBuilder(executable.absolutePath, "--data", dataPath.absolutePath)
@@ -161,15 +120,15 @@ class EngineClient(private val enginePath: File?, private val dataPath: File,
         // integrity level and allow time for the user to answer Windows' UAC prompt.
         val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
         while (System.nanoTime() < deadline) {
-            if (runCatching { request("status").ok }.getOrDefault(false)) return EngineStartup(true, "Движок подключён")
+            if (runCatching { request("status").ok }.getOrDefault(false)) return EngineStartup(true, getString(Res.string.engine_connected))
             if (!process.isAlive && process.exitValue() != 0) {
                 return EngineStartup(false, if (process.exitValue() == 1223)
-                    "Запуск отменён в Windows. Чтобы запустить движок, откройте PurrLCD заново и подтвердите запрос."
-                else "Не удалось запустить движок (код ${process.exitValue()}). Проверьте engine-start.log в папке данных.")
+                    getString(Res.string.engine_start_cancelled)
+                else getString(Res.string.engine_start_exit, process.exitValue()))
             }
             kotlinx.coroutines.delay(200)
         }
-        return EngineStartup(false, "Движок ещё не ответил. Завершите запрос Windows; редактор подключится автоматически.")
+        return EngineStartup(false, getString(Res.string.engine_waiting_permission))
     }
 
     override fun close() {

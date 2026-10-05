@@ -63,8 +63,7 @@ bool isSupportedRyzenCpu() {
     const unsigned family = baseFamily + (baseFamily == 0x0f ? ((eax >> 20) & 0xff) : 0);
     const unsigned model = ((eax >> 4) & 0x0f) |
         ((baseFamily == 0x06 || baseFamily == 0x0f) ? ((eax >> 12) & 0xf0) : 0);
-    // Scope this first provider to Vermeer (includes Ryzen 7 5700X). Other CPU
-    // families need their own verified temperature format and offset handling.
+    // Vermeer only; other CPU families need verified temperature formats and offsets.
     return family == 0x19 && model == 0x21;
 }
 
