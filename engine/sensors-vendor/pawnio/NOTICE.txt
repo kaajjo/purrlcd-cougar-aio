@@ -1,0 +1,42 @@
+Optional CPU temperature support for AMD family 19h, model 21h (Vermeer,
+including Ryzen 7 5700X).
+
+Required prerequisite: official signed PawnIO installed by the user.
+https://pawnio.eu/
+https://github.com/namazso/PawnIO.Setup/releases/tag/2.2.0
+No installer or driver is executed, installed, started, or redistributed by
+PurrLCD. Do not use the unrestricted/test-signing edition.
+
+The agent dynamically loads PawnIOLib.dll from its installed location according
+to the official integration guide. It calls pawnio_open, pawnio_load,
+pawnio_execute and pawnio_close. Only ioctl_read_smn with fixed register
+0x00059800 is called. The global Access_PCI mutex protects indexed PCI access.
+The selected public module contains other APIs; PurrLCD does not call them.
+https://github.com/namazso/PawnIO.Modules/wiki/Using-PawnIO-Modules
+
+Copy this pawnio folder to sensors-vendor/pawnio beside the agent executable.
+Keep the source archive and license available when distributing the module.
+The module remains an external, replaceable file; it is not embedded in the exe.
+
+AMDFamily17.bin comes unmodified from the official signed module release 0.2.11:
+https://github.com/namazso/PawnIO.Modules/releases/tag/0.2.11
+SHA256 DAE74615761B78BDF064DFB3E136252DDCC6FC727D88F14738D0E5800D427A91
+Copyright (C) 2025 namazso <admin@namazso.eu>
+License: GNU Lesser General Public License 2.1 or later.
+The complete corresponding source archive for this tag is included as
+PawnIO.Modules-0.2.11-source.zip; the license is COPYING.LGPL-2.1.txt.
+
+The installed official PawnIO binaries have their own license. We do not bundle
+those libraries. The project's author recommends user installation to allow
+local combination by applications with different licenses.
+
+CPU decoding references:
+https://github.com/torvalds/linux/blob/master/drivers/hwmon/k10temp.c
+https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/blob/master/LibreHardwareMonitorLib/Hardware/Cpu/Amd17Cpu.cs
+
+Validated on Ryzen 7 5700X with official PawnIO 2.2.0 on 2026-10-05: live
+Tctl/Tdie readings of 49.125-54.000 C. The default restricted installation
+requires the native agent to run as administrator; the editor need not be
+elevated. Without the driver or sufficient access, hasCpuTemp remains false and
+the status tells the user what is missing. The application does not change the
+driver access policy.

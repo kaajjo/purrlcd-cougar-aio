@@ -1,0 +1,27 @@
+AMD ADLX is an optional LOCAL build dependency. No AMD SDK header, sample source,
+or driver DLL is redistributed in this directory.
+
+The sensors.cpp implementation uses the public API from AMD ADLX SDK 1.5:
+https://github.com/GPUOpen-LibrariesAndSDKs/ADLX/tree/d9f04a9bba022d6cf6333f005dd540b4ad19fb63
+
+Official SDK license:
+https://github.com/GPUOpen-LibrariesAndSDKs/ADLX/blob/d9f04a9bba022d6cf6333f005dd540b4ad19fb63/ADLX%20SDK%20License%20Agreement.pdf
+
+This SDK is not covered by the license of PurrLCD. AMD's license permits
+internal SDK use and imposes conditions on object-code distribution and end-user
+terms. Do not publish the downloaded SDK source/header files as part of this
+project. Review the official agreement before publishing a binary built with it.
+
+For a local build, use fetch-adlx.ps1 with a directory outside the distributable
+source tree, include that directory, and define PURRLCD_WITH_ADLX=1. Without the
+define the engine still compiles and reports GPU temperature as unavailable.
+
+The runtime loads the installed Windows System32/amdadlx64.dll. It never copies
+or installs a driver and never calls tuning APIs. GPU temperature, CPU load,
+and physical RAM load work without an additional sensor driver. CPU temperature
+uses the optional installed PawnIO API; see pawnio/NOTICE.txt.
+
+API documentation:
+https://gpuopen.com/manuals/adlx/adlx-sdk-references/adlx-interfaces/performance-monitoring/iadlxperformancemonitoringservices/getcurrentgpumetrics/
+https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getsystemtimes
+https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex

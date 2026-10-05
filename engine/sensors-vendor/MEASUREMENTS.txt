@@ -1,0 +1,56 @@
+Sensor implementation validation, 2026-10-05
+
+Machine: Windows x64, Ryzen 7 5700X (16 logical processors), Radeon RX 9070 XT.
+Providers: installed AMD ADLX 1.5.0.124; official restricted PawnIO 2.2.0;
+signed AMDFamily17 module 0.2.11. Native release build with static C++ runtime.
+
+Live temperature reads
+  CPU Tctl/Tdie: 49.125-54.000 C during the initial 12-sample combined run.
+  GPU: 54-55 C during that run. Temperatures vary with the machine's workload.
+  The default restricted PawnIO installation denied a normal process with
+  0x80070005; an elevated process read CPU temperature successfully. No driver
+  access policy was weakened. GPU access also works in a normal process.
+
+Isolated diagnostic process measurements (MiB = 1,048,576 bytes)
+  Configuration                 Private commit       Working set
+  ADLX GPU, normal process           7.98                 19.98
+  ADLX GPU, elevated process        62.34                 21.89
+  PawnIO CPU, elevated process       6.97                  5.19
+  CPU + GPU, elevated process       69.20                 21.18
+
+Working set is resident process memory, including shared pages. Private commit
+is a different accounting value, not a claim that the process occupies that
+amount of physical RAM. These values must not be added together. The large
+commit increase with elevation was reproduced in the ADLX-only diagnostic;
+it should not be attributed solely to PawnIO.
+
+Combined diagnostic: initialization 440 ms; first sample 4.76 ms, subsequent
+samples about 0.21-0.47 ms. Over 12.016 seconds, GetProcessTimes increased by
+0.0156 CPU seconds, about 0.0081% of the entire 16-thread CPU. This is a short
+measurement with finite timer resolution, not a zero-overhead guarantee.
+It excludes the editor, renderer, USB transfer, and any separately accounted
+driver/service work. Whole-application measurements must be taken separately.
+
+Whole-agent observation from a separate 40-second run on this machine:
+  LCD connected, periodic output active, no editor processes running.
+  CPU utilization normalized over all 16 logical processors: 0.03416%.
+  Working set: 36.918 MiB; private commit: 72.984 MiB.
+This includes native rendering and USB output. It remains a short observation
+under the current scene and update interval, not an upper bound for all scenes.
+
+Renderer and IPC validation
+  A native test decoded the produced PNGs and verified transparent overlay
+  corners, visible text, empty transparent overlays, opaque background color,
+  and 720x720 dimensions. Across 96 renders after warm-up, process handles
+  stayed at 134, GDI handles at 3, and private commit at 6,127,616 bytes.
+  Working set increased by 45,056 bytes. This short run finds obvious leaks;
+  it is not a long-duration endurance test.
+  The integration_test.py script verifies normal-user IPC, preview PNG checksums
+  and pixel color, no scene mutation by preview, and rejection of an invalid
+  scene without mutation. It sends no device-control commands. A 12-preview
+  run observed stable resident memory; the engine was already outputting to
+  the LCD, so those values include more than the isolated sensor diagnostic.
+
+These are observations on this machine and driver versions, not resource
+requirements or promises for other systems. Source tests use synthetic numbers
+only for renderer assertions; runtime sensor providers never fabricate values.
