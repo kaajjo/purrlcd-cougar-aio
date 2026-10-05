@@ -45,6 +45,7 @@ import purrlcd.resources.connect
 import purrlcd.resources.display_connecting
 import purrlcd.resources.display_running
 import purrlcd.resources.display_stopped
+import purrlcd.resources.preview_edit_hint
 import purrlcd.resources.preview_draft_hint
 import purrlcd.resources.preview_heading
 import purrlcd.resources.preview_native_hint
@@ -172,11 +173,17 @@ fun EditorContent(
                                 .clip(EditorShapes.Preview).background(PreviewBackground)
                                 .border(EditorDimensions.BorderWidth, PreviewBorder, EditorShapes.Preview)
                         ) {
-                            ScreenPreview(scene, status, nativePreview)
+                            ScreenPreview(
+                                scene, status, nativePreview,
+                                selectedLayer = selectedLayer,
+                                onSelectLayer = { selectedLayer = it },
+                                onSceneChange = if (page == 1) onSceneChange else null
+                            )
                         }
                     }
                     Text(
-                        if (nativePreview != null) stringResource(Res.string.preview_native_hint) else stringResource(
+                        if (page == 1) stringResource(Res.string.preview_edit_hint)
+                        else if (nativePreview != null) stringResource(Res.string.preview_native_hint) else stringResource(
                             Res.string.preview_draft_hint
                         ), color = Muted, style = editorTextStyle(EditorTypography.Caption)
                     )

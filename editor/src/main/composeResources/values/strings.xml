@@ -10,6 +10,7 @@
     <string name="apply">Apply</string>
     <string name="preview_heading">PREVIEW</string>
     <string name="preview_native_hint">Engine image · scaled to fit the preview</string>
+    <string name="preview_edit_hint">Draft · drag CPU/GPU text to move it</string>
     <string name="preview_draft_hint">Draft · start the engine for an accurate preview</string>
     <string name="display_connecting">Connecting to the display…</string>
     <string name="display_running">Display is running</string>
@@ -38,7 +39,7 @@
     <string name="appearance_background_color">Background color</string>
     <string name="appearance_background_heading">BACKGROUND</string>
     <string name="appearance_choose_image">Choose image</string>
-    <string name="appearance_coordinates_hint">Coordinates are in pixels from the top-left corner of the screen.</string>
+    <string name="appearance_coordinates_hint">Drag text in the preview or enter X/Y in pixels from the top-left corner.</string>
     <string name="appearance_label">Label</string>
     <string name="appearance_layers_heading">METRIC LAYERS</string>
     <string name="appearance_remove_image">Remove image</string>

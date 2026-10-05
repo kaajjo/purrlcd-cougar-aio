@@ -119,8 +119,8 @@ fun AppearancePanel(
         { if (it.length <= 24) update(selected.copy(label = it)) })
     Spacer(Modifier.height(EditorSpacing.Space12))
     Row(horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space12)) {
-        NumberField("X", selected.x, 0..719, Modifier.weight(1f)) { update(selected.copy(x = it)) }
-        NumberField("Y", selected.y, 0..719, Modifier.weight(1f)) { update(selected.copy(y = it)) }
+        NumberField("X", selected.x, TextLayer.CoordinateRange, Modifier.weight(1f)) { update(selected.copy(x = it)) }
+        NumberField("Y", selected.y, TextLayer.CoordinateRange, Modifier.weight(1f)) { update(selected.copy(y = it)) }
     }
     Spacer(Modifier.height(EditorSpacing.Space12))
     NumberField(stringResource(Res.string.appearance_text_size), selected.fontSize, 12..120) {

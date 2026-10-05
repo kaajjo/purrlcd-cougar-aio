@@ -10,7 +10,12 @@ data class TextLayer(
     val fontSize: Int = 44,
     val color: String = "#FFFFFF",
     val label: String = "CPU"
-)
+) {
+    companion object {
+        // The engine validates text origins against this range.
+        val CoordinateRange = 0..710
+    }
+}
 
 @Serializable
 data class Scene(

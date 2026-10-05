@@ -1,6 +1,10 @@
 package purrlcd.ui.tooling
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import purrlcd.ui.preview.ScreenPreview
@@ -31,5 +35,20 @@ fun LcdCustomLayerPreview() {
     )
     PreviewFrame(360.dp, 360.dp) {
         ScreenPreview(scene, PreviewSamples.status, native = null)
+    }
+}
+
+@Preview(name = "LCD · drag layers", group = "Display", widthDp = 360, heightDp = 360)
+@Composable
+fun LcdEditablePreview() {
+    var scene by remember { mutableStateOf(PreviewSamples.scene) }
+    var selectedLayer by remember { mutableStateOf(0) }
+    PreviewFrame(360.dp, 360.dp) {
+        ScreenPreview(
+            scene, PreviewSamples.status, native = null,
+            selectedLayer = selectedLayer,
+            onSelectLayer = { selectedLayer = it },
+            onSceneChange = { scene = it }
+        )
     }
 }

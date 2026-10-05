@@ -10,6 +10,7 @@
     <string name="apply">Применить</string>
     <string name="preview_heading">ПРЕДПРОСМОТР</string>
     <string name="preview_native_hint">Изображение от движка · масштабировано для просмотра</string>
+    <string name="preview_edit_hint">Макет · перетащите текст CPU/GPU для перемещения</string>
     <string name="preview_draft_hint">Макет · точный предпросмотр появится при запуске движка</string>
     <string name="display_connecting">Подключаем экран…</string>
     <string name="display_running">Экран работает</string>
@@ -38,7 +39,7 @@
     <string name="appearance_background_color">Цвет фона</string>
     <string name="appearance_background_heading">ФОН</string>
     <string name="appearance_choose_image">Выбрать изображение</string>
-    <string name="appearance_coordinates_hint">Координаты задаются в пикселях от левого верхнего угла экрана.</string>
+    <string name="appearance_coordinates_hint">Перетаскивайте текст на превью или задайте X/Y в пикселях от левого верхнего угла.</string>
     <string name="appearance_label">Подпись</string>
     <string name="appearance_layers_heading">СЛОИ ПОКАЗАТЕЛЕЙ</string>
     <string name="appearance_remove_image">Убрать изображение</string>
