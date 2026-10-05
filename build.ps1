@@ -20,31 +20,31 @@ $editorWork = Join-Path $workRoot 'editor-build'
 $adlxPath = if ($AdlxInclude) { [System.IO.Path]::GetFullPath($AdlxInclude) } else { $null }
 
 if ($adlxPath -and -not (Test-Path -LiteralPath (Join-Path $adlxPath 'ADLX.h') -PathType Leaf)) {
-    throw 'AdlxInclude должен указывать на папку с ADLX.h. См. engine/sensors-vendor/fetch-adlx.ps1.'
+    throw 'AdlxInclude must point to the directory containing ADLX.h. See engine/sensors-vendor/fetch-adlx.ps1.'
 }
 
 $clangCommand = Get-Command $Clang -CommandType Application -ErrorAction Stop
 $clangPath = $clangCommand.Source
 $target = (& $clangPath -dumpmachine | Out-String).Trim()
 if ($LASTEXITCODE -ne 0 -or $target -notmatch '^x86_64.*(mingw|windows-gnu|w64)') {
-    throw "Нужен компилятор LLVM-MinGW для Windows x64; найден target '$target'. Передайте полный путь через -Clang."
+    throw "An LLVM-MinGW compiler for Windows x64 is required; found target '$target'. Pass the full compiler path via -Clang."
 }
 
 $running = @(Get-Process -Name PurrLCD, PurrLCDEditor -ErrorAction SilentlyContinue)
 if ($running.Count -gt 0) {
-    throw 'Перед сборкой закройте редактор и завершите PurrLCD через меню значка в трее.'
+    throw 'Before building, close the editor and exit PurrLCD from its system tray menu.'
 }
 
 $sources = @('app.cpp', 'scene.cpp', 'protocol.cpp', 'hid_display.cpp', 'sensors.cpp', 'privilege.cpp') |
     ForEach-Object { Join-Path $engineSource $_ }
 foreach ($source in $sources) {
-    if (-not (Test-Path -LiteralPath $source -PathType Leaf)) { throw "Не найден исходник: $source" }
+    if (-not (Test-Path -LiteralPath $source -PathType Leaf)) { throw "Source file not found: $source" }
 }
 
 $pawnSource = Join-Path $engineSource 'sensors-vendor\pawnio'
 foreach ($required in @('AMDFamily17.bin', 'COPYING.LGPL-2.1.txt', 'NOTICE.txt', 'PawnIO.Modules-0.2.11-source.zip')) {
     if (-not (Test-Path -LiteralPath (Join-Path $pawnSource $required) -PathType Leaf)) {
-        throw "Не хватает файла поставки PawnIO: $required"
+        throw "Missing bundled PawnIO file: $required"
     }
 }
 
@@ -60,53 +60,53 @@ $compileArguments = @(
 )
 
 if ($adlxPath) { $compileArguments += @('-DPURRLCD_WITH_ADLX=1', "-I$adlxPath") }
-Write-Host 'Сборка фонового движка C++…'
+Write-Host 'Building the C++ background engine...'
 & $clangPath @compileArguments
-if ($LASTEXITCODE -ne 0) { throw "Сборка движка завершилась с кодом $LASTEXITCODE" }
+if ($LASTEXITCODE -ne 0) { throw "Engine build failed with exit code $LASTEXITCODE" }
 
-Write-Host 'Проверка протокола без обращения к экрану…'
+Write-Host 'Testing the protocol without accessing the display...'
 $testExe = Join-Path $nativeBuild 'protocol_test.exe'
 $testArguments = @('-std=c++17', '-O2', '-static',
     (Join-Path $engineSource 'protocol_test.cpp'), (Join-Path $engineSource 'protocol.cpp'), '-o', $testExe)
 & $clangPath @testArguments
-if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать проверки протокола.' }
+if ($LASTEXITCODE -ne 0) { throw 'Failed to build protocol tests.' }
 & $testExe
-if ($LASTEXITCODE -ne 0) { throw 'Проверки протокола не прошли.' }
+if ($LASTEXITCODE -ne 0) { throw 'Protocol tests failed.' }
 
-Write-Host 'Проверка совпадения слоёв превью с отрисовкой экрана…'
+Write-Host 'Checking that preview layers match display rendering...'
 $sceneTestExe = Join-Path $nativeBuild 'scene_test.exe'
 & $clangPath -std=c++17 -O2 -static -DUNICODE -D_UNICODE -DNOMINMAX `
     (Join-Path $engineSource 'scene_test.cpp') (Join-Path $engineSource 'scene.cpp') `
     -lgdiplus -lole32 -o $sceneTestExe
-if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать проверки отрисовки.' }
+if ($LASTEXITCODE -ne 0) { throw 'Failed to build rendering tests.' }
 & $sceneTestExe
-if ($LASTEXITCODE -ne 0) { throw 'Проверки отрисовки не прошли.' }
+if ($LASTEXITCODE -ne 0) { throw 'Rendering tests failed.' }
 
-Write-Host 'Проверка восстановления после сна без обращения к экрану…'
+Write-Host 'Testing sleep recovery without accessing the display...'
 $powerTestExe = Join-Path $nativeBuild 'power_resume_test.exe'
 $powerTestSources = @((Join-Path $engineSource 'power_resume_test.cpp')) + @($sources | Where-Object { [IO.Path]::GetFileName($_) -ne 'app.cpp' })
 & $clangPath -std=c++17 -O2 -static -DUNICODE -D_UNICODE -DNOMINMAX -D_WIN32_WINNT=0x0A00 `
     @powerTestSources -lgdiplus -lole32 -loleaut32 -luuid -lshell32 -ladvapi32 `
     -lpsapi -lsetupapi -lhid -luser32 -lgdi32 -o $powerTestExe
-if ($LASTEXITCODE -ne 0) { throw 'Не удалось собрать проверки восстановления после сна.' }
+if ($LASTEXITCODE -ne 0) { throw 'Failed to build sleep recovery tests.' }
 & $powerTestExe
-if ($LASTEXITCODE -ne 0) { throw 'Проверки восстановления после сна не прошли.' }
+if ($LASTEXITCODE -ne 0) { throw 'Sleep recovery tests failed.' }
 
 
 if (-not $SkipEditor) {
     if (-not (Get-Command java -CommandType Application -ErrorAction SilentlyContinue)) {
-        throw 'Для сборки редактора установите JDK 21 и добавьте java в PATH.'
+        throw 'To build the editor, install JDK 21 and add java to PATH.'
     }
     $oldGradleHome = $env:GRADLE_USER_HOME
     $env:GRADLE_USER_HOME = Join-Path $editorWork 'gradle-home'
     Push-Location $editorSource
     try {
-        Write-Host 'Сборка и проверка редактора Compose…'
+        Write-Host 'Building and testing the Compose editor...'
         & (Join-Path $editorSource 'gradlew.bat') `
             --gradle-user-home $env:GRADLE_USER_HOME `
             --project-cache-dir (Join-Path $editorWork 'project-cache') `
             test createDistributable
-        if ($LASTEXITCODE -ne 0) { throw "Сборка редактора завершилась с кодом $LASTEXITCODE" }
+        if ($LASTEXITCODE -ne 0) { throw "Editor build failed with exit code $LASTEXITCODE" }
     }
     finally {
         Pop-Location
@@ -116,14 +116,14 @@ if (-not $SkipEditor) {
 
     $editorImage = Join-Path $editorWork 'build\compose\binaries\main\app\PurrLCDEditor'
     if (-not (Test-Path -LiteralPath (Join-Path $editorImage 'PurrLCDEditor.exe') -PathType Leaf)) {
-        throw "Не найден собранный редактор: $editorImage"
+        throw "Built editor not found: $editorImage"
     }
     # Replace only this generated application directory. Persisted app/data is separate.
     $checkedEditor = [System.IO.Path]::GetFullPath($editorDestination)
     $expectedEditor = [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'app\editor'))
     if (-not [string]::Equals($checkedEditor, $expectedEditor, [StringComparison]::OrdinalIgnoreCase) -or
         -not $checkedEditor.StartsWith($projectRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
-        throw 'Путь замены редактора оказался за пределами папки проекта.'
+        throw 'The editor replacement path is outside the project directory.'
     }
     if (Test-Path -LiteralPath $checkedEditor) { Remove-Item -LiteralPath $checkedEditor -Recurse -Force }
     Copy-Item -LiteralPath $editorImage -Destination $checkedEditor -Recurse
@@ -137,5 +137,5 @@ Copy-Item -LiteralPath (Join-Path $engineSource 'sensors-vendor\NOTICE.txt') -De
 Copy-Item -LiteralPath (Join-Path $engineSource 'third_party\JSON-LICENSE.txt') -Destination $engineDestination -Force
 Copy-Item -LiteralPath (Join-Path $engineSource 'third_party\LLVM-MINGW-LICENSE.txt') -Destination $engineDestination -Force
 
-Write-Host "Готово: $applicationRoot"
-Write-Host 'Данные и настройки в app/data сохранены. Приложение и драйверы автоматически не запускаются.'
+Write-Host "Done: $applicationRoot"
+Write-Host 'Data and settings in app/data have been preserved. The application and drivers are not started automatically.'
