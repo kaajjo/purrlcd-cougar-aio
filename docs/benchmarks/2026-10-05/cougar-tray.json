@@ -1,0 +1,2680 @@
+{
+  "label": "cougar-tray",
+  "startedAt": "2026-10-05T16:25:34.3125784+03:00",
+  "durationSeconds": 120.0099639,
+  "logicalProcessors": 16,
+  "processIds": [
+    13472,
+    14012,
+    14280,
+    15932,
+    24692
+  ],
+  "processNames": [
+    "COUGAR LCD Editor"
+  ],
+  "cpuPercentAverage": 1.1196986952847505,
+  "cpuPercentPeakSample": 1.6474792268452718,
+  "workingSetMiBAverage": 713.5536458333333,
+  "workingSetMiBMin": 678.2734375,
+  "workingSetMiBMax": 742.26171875,
+  "privateCommitMiBAverage": 494.21673177083335,
+  "privateCommitMiBMin": 455.8203125,
+  "privateCommitMiBMax": 522.5078125,
+  "initialProcesses": [
+    {
+      "id": 13472,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 30.578125,
+      "workingSetBytes": 227090432,
+      "privateCommitBytes": 213131264
+    },
+    {
+      "id": 14012,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 0.078125,
+      "workingSetBytes": 48537600,
+      "privateCommitBytes": 13729792
+    },
+    {
+      "id": 14280,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 50.109375,
+      "workingSetBytes": 79470592,
+      "privateCommitBytes": 14434304
+    },
+    {
+      "id": 15932,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 221.25,
+      "workingSetBytes": 262868992,
+      "privateCommitBytes": 195682304
+    },
+    {
+      "id": 24692,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 1.546875,
+      "workingSetBytes": 122716160,
+      "privateCommitBytes": 70434816
+    }
+  ],
+  "finalProcesses": [
+    {
+      "id": 13472,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 37.859375,
+      "workingSetBytes": 225148928,
+      "privateCommitBytes": 211255296
+    },
+    {
+      "id": 14012,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 0.078125,
+      "workingSetBytes": 48488448,
+      "privateCommitBytes": 13660160
+    },
+    {
+      "id": 14280,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 50.59375,
+      "workingSetBytes": 65536000,
+      "privateCommitBytes": 14360576
+    },
+    {
+      "id": 15932,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 234.65625,
+      "workingSetBytes": 282685440,
+      "privateCommitBytes": 211066880
+    },
+    {
+      "id": 24692,
+      "name": "COUGAR LCD Editor",
+      "cpuSeconds": 1.875,
+      "workingSetBytes": 119566336,
+      "privateCommitBytes": 66531328
+    }
+  ],
+  "samples": [
+    {
+      "elapsedSeconds": 2.0103625,
+      "cpuPercent": 1.0201052049070753,
+      "workingSetMiB": 678.2734375,
+      "privateCommitMiB": 455.8203125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 30.703125,
+          "workingSetBytes": 221208576,
+          "privateCommitBytes": 207212544
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.140625,
+          "workingSetBytes": 79470592,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 221.421875,
+          "workingSetBytes": 239149056,
+          "privateCommitBytes": 172068864
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 122855424,
+          "privateCommitBytes": 70516736
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 4.005491,
+      "cpuPercent": 1.1257890155947348,
+      "workingSetMiB": 714.43359375,
+      "privateCommitMiB": 489.67578125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 30.796875,
+          "workingSetBytes": 222212096,
+          "privateCommitBytes": 208834560
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 79470592,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 221.671875,
+          "workingSetBytes": 275808256,
+          "privateCommitBytes": 205897728
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 123109376,
+          "privateCommitBytes": 70565888
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 6.0161456,
+      "cpuPercent": 1.1656651520355612,
+      "workingSetMiB": 695.20703125,
+      "privateCommitMiB": 469.41796875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 30.921875,
+          "workingSetBytes": 224890880,
+          "privateCommitBytes": 211271680
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 79470592,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 221.921875,
+          "workingSetBytes": 252162048,
+          "privateCommitBytes": 181460992
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 123916288,
+          "privateCommitBytes": 71323648
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 8.0058373,
+      "cpuPercent": 0.834378637655271,
+      "workingSetMiB": 693.6796875,
+      "privateCommitMiB": 470.26953125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.0,
+          "workingSetBytes": 222965760,
+          "privateCommitBytes": 209121280
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 78422016,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.109375,
+          "workingSetBytes": 253362176,
+          "privateCommitBytes": 184500224
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 124088320,
+          "privateCommitBytes": 71327744
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 10.0160962,
+      "cpuPercent": 0.8258420097033272,
+      "workingSetMiB": 684.8046875,
+      "privateCommitMiB": 461.171875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.078125,
+          "workingSetBytes": 222461952,
+          "privateCommitBytes": 209170432
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 78422016,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.296875,
+          "workingSetBytes": 244350976,
+          "privateCommitBytes": 174907392
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 124297216,
+          "privateCommitBytes": 71331840
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 12.0156645,
+      "cpuPercent": 1.0744506701771577,
+      "workingSetMiB": 712.1640625,
+      "privateCommitMiB": 489.671875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.21875,
+          "workingSetBytes": 224796672,
+          "privateCommitBytes": 211144704
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 78422016,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.5,
+          "workingSetBytes": 271634432,
+          "privateCommitBytes": 202977280
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 123367424,
+          "privateCommitBytes": 71172096
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 14.0046671,
+      "cpuPercent": 0.8837658130763626,
+      "workingSetMiB": 699.296875,
+      "privateCommitMiB": 477.75390625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.359375,
+          "workingSetBytes": 225210368,
+          "privateCommitBytes": 211255296
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48537600,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.15625,
+          "workingSetBytes": 77897728,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.640625,
+          "workingSetBytes": 258076672,
+          "privateCommitBytes": 190242816
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.546875,
+          "workingSetBytes": 123543552,
+          "privateCommitBytes": 71299072
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 16.0152209,
+      "cpuPercent": 0.92286451126053,
+      "workingSetMiB": 698.18359375,
+      "privateCommitMiB": 478.0859375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.484375,
+          "workingSetBytes": 225263616,
+          "privateCommitBytes": 211218432
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48529408,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.171875,
+          "workingSetBytes": 77627392,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.765625,
+          "workingSetBytes": 257695744,
+          "privateCommitBytes": 190816256
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.578125,
+          "workingSetBytes": 122982400,
+          "privateCommitBytes": 71110656
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 18.0047342,
+      "cpuPercent": 0.9817099488603558,
+      "workingSetMiB": 714.3828125,
+      "privateCommitMiB": 493.90234375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.609375,
+          "workingSetBytes": 227106816,
+          "privateCommitBytes": 213553152
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48529408,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.171875,
+          "workingSetBytes": 76193792,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 222.9375,
+          "workingSetBytes": 273494016,
+          "privateCommitBytes": 204890112
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.59375,
+          "workingSetBytes": 123760640,
+          "privateCommitBytes": 71286784
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 20.0162787,
+      "cpuPercent": 1.5535326213265483,
+      "workingSetMiB": 711.46875,
+      "privateCommitMiB": 489.58203125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.828125,
+          "workingSetBytes": 220921856,
+          "privateCommitBytes": 207060992
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48529408,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 76193792,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.140625,
+          "workingSetBytes": 276586496,
+          "privateCommitBytes": 206999552
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.640625,
+          "workingSetBytes": 123797504,
+          "privateCommitBytes": 71139328
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 22.0039487,
+      "cpuPercent": 1.130013407658214,
+      "workingSetMiB": 736.03515625,
+      "privateCommitMiB": 512.57421875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 31.984375,
+          "workingSetBytes": 225378304,
+          "privateCommitBytes": 211550208
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48529408,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 76193792,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.328125,
+          "workingSetBytes": 297676800,
+          "privateCommitBytes": 226562048
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124010496,
+          "privateCommitBytes": 71196672
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 24.0179677,
+      "cpuPercent": 0.6788354528929466,
+      "workingSetMiB": 702.0546875,
+      "privateCommitMiB": 474.98046875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.078125,
+          "workingSetBytes": 222642176,
+          "privateCommitBytes": 209248256
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48529408,
+          "privateCommitBytes": 13729792
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 76193792,
+          "privateCommitBytes": 14434304
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.453125,
+          "workingSetBytes": 264122368,
+          "privateCommitBytes": 188157952
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124669952,
+          "privateCommitBytes": 72482816
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 26.0049063,
+      "cpuPercent": 0.8846838548508753,
+      "workingSetMiB": 695.93359375,
+      "privateCommitMiB": 468.84375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.25,
+          "workingSetBytes": 224702464,
+          "privateCommitBytes": 211001344
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 76156928,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.5625,
+          "workingSetBytes": 256131072,
+          "privateCommitBytes": 180830208
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124256256,
+          "privateCommitBytes": 71761920
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 28.0160988,
+      "cpuPercent": 0.5826766955425688,
+      "workingSetMiB": 694.94921875,
+      "privateCommitMiB": 479.25,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.359375,
+          "workingSetBytes": 227139584,
+          "privateCommitBytes": 213405696
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 70127616,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.640625,
+          "workingSetBytes": 257691648,
+          "privateCommitBytes": 188510208
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 125255680,
+          "privateCommitBytes": 72589312
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 30.0060824,
+      "cpuPercent": 1.1777735253697577,
+      "workingSetMiB": 700.89453125,
+      "privateCommitMiB": 484.734375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.546875,
+          "workingSetBytes": 225181696,
+          "privateCommitBytes": 211279872
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.203125,
+          "workingSetBytes": 69865472,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 223.828125,
+          "workingSetBytes": 266481664,
+          "privateCommitBytes": 197050368
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124919808,
+          "privateCommitBytes": 71925760
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 32.0194392,
+      "cpuPercent": 1.1155964754980336,
+      "workingSetMiB": 735.12109375,
+      "privateCommitMiB": 516.97265625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.6875,
+          "workingSetBytes": 227426304,
+          "privateCommitBytes": 213356544
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.21875,
+          "workingSetBytes": 69869568,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 224.03125,
+          "workingSetBytes": 299929600,
+          "privateCommitBytes": 228638720
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 125112320,
+          "privateCommitBytes": 72060928
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 34.0045573,
+      "cpuPercent": 1.4758252922080548,
+      "workingSetMiB": 717.60546875,
+      "privateCommitMiB": 499.4375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 32.828125,
+          "workingSetBytes": 221343744,
+          "privateCommitBytes": 207347712
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.25,
+          "workingSetBytes": 69869568,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 224.328125,
+          "workingSetBytes": 286818304,
+          "privateCommitBytes": 215638016
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 125939712,
+          "privateCommitBytes": 72683520
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 36.0199469,
+      "cpuPercent": 1.6474792268452718,
+      "workingSetMiB": 725.98046875,
+      "privateCommitMiB": 507.9453125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.0,
+          "workingSetBytes": 224817152,
+          "privateCommitBytes": 211361792
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.265625,
+          "workingSetBytes": 69869568,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 224.671875,
+          "workingSetBytes": 293220352,
+          "privateCommitBytes": 220905472
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124846080,
+          "privateCommitBytes": 72323072
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 38.0162671,
+      "cpuPercent": 0.9294444598616998,
+      "workingSetMiB": 687.25390625,
+      "privateCommitMiB": 466.86328125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.140625,
+          "workingSetBytes": 222826496,
+          "privateCommitBytes": 209227776
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.265625,
+          "workingSetBytes": 69869568,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 224.828125,
+          "workingSetBytes": 254414848,
+          "privateCommitBytes": 179843072
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 125034496,
+          "privateCommitBytes": 72441856
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 40.0050446,
+      "cpuPercent": 0.8838658422070855,
+      "workingSetMiB": 730.19921875,
+      "privateCommitMiB": 509.39453125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.21875,
+          "workingSetBytes": 222912512,
+          "privateCommitBytes": 209141760
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.28125,
+          "workingSetBytes": 69869568,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 225.015625,
+          "workingSetBytes": 299454464,
+          "privateCommitBytes": 224780288
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 124940288,
+          "privateCommitBytes": 72187904
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 42.0137573,
+      "cpuPercent": 1.215408380700732,
+      "workingSetMiB": 731.41796875,
+      "privateCommitMiB": 512.890625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.34375,
+          "workingSetBytes": 225366016,
+          "privateCommitBytes": 211267584
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.28125,
+          "workingSetBytes": 68558848,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 225.28125,
+          "workingSetBytes": 299405312,
+          "privateCommitBytes": 226267136
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.65625,
+          "workingSetBytes": 125124608,
+          "privateCommitBytes": 72241152
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 44.0097897,
+      "cpuPercent": 1.5656058488830165,
+      "workingSetMiB": 731.9453125,
+      "privateCommitMiB": 513.1171875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.5,
+          "workingSetBytes": 222760960,
+          "privateCommitBytes": 208973824
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.296875,
+          "workingSetBytes": 68689920,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 225.578125,
+          "workingSetBytes": 302497792,
+          "privateCommitBytes": 229031936
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 125059072,
+          "privateCommitBytes": 72007680
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 46.0105312,
+      "cpuPercent": 1.0250106023191883,
+      "workingSetMiB": 726.4140625,
+      "privateCommitMiB": 506.73046875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.578125,
+          "workingSetBytes": 225112064,
+          "privateCommitBytes": 211410944
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.328125,
+          "workingSetBytes": 68689920,
+          "privateCommitBytes": 14368768
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 225.796875,
+          "workingSetBytes": 294080512,
+          "privateCommitBytes": 219774976
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 125325312,
+          "privateCommitBytes": 72130560
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 48.0093281,
+      "cpuPercent": 1.221437880957293,
+      "workingSetMiB": 737.1015625,
+      "privateCommitMiB": 517.79296875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.671875,
+          "workingSetBytes": 225275904,
+          "privateCommitBytes": 211243008
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.34375,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 226.078125,
+          "workingSetBytes": 305876992,
+          "privateCommitBytes": 231542784
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124579840,
+          "privateCommitBytes": 72138752
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 50.0112746,
+      "cpuPercent": 0.926832335429542,
+      "workingSetMiB": 706.33203125,
+      "privateCommitMiB": 487.31640625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.84375,
+          "workingSetBytes": 222670848,
+          "privateCommitBytes": 208969728
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48492544,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.34375,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 226.203125,
+          "workingSetBytes": 276238336,
+          "privateCommitBytes": 202166272
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124559360,
+          "privateCommitBytes": 71831552
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 52.0116903,
+      "cpuPercent": 1.3669033891305706,
+      "workingSetMiB": 729.421875,
+      "privateCommitMiB": 509.8671875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 33.953125,
+          "workingSetBytes": 224907264,
+          "privateCommitBytes": 211312640
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.359375,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 226.515625,
+          "workingSetBytes": 298160128,
+          "privateCommitBytes": 223510528
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124616704,
+          "privateCommitBytes": 71790592
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 54.0114423,
+      "cpuPercent": 1.5626937740279787,
+      "workingSetMiB": 713.171875,
+      "privateCommitMiB": 493.4140625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.03125,
+          "workingSetBytes": 223223808,
+          "privateCommitBytes": 209223680
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.375,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 226.921875,
+          "workingSetBytes": 283160576,
+          "privateCommitBytes": 208801792
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124260352,
+          "privateCommitBytes": 71335936
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 56.018981,
+      "cpuPercent": 1.3134086779995837,
+      "workingSetMiB": 719.69921875,
+      "privateCommitMiB": 497.91796875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.171875,
+          "workingSetBytes": 226611200,
+          "privateCommitBytes": 213127168
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.390625,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 227.1875,
+          "workingSetBytes": 286441472,
+          "privateCommitBytes": 209551360
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124436480,
+          "privateCommitBytes": 71405568
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 58.0053926,
+      "cpuPercent": 1.0324049909897808,
+      "workingSetMiB": 713.453125,
+      "privateCommitMiB": 491.23828125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.265625,
+          "workingSetBytes": 221122560,
+          "privateCommitBytes": 207142912
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.390625,
+          "workingSetBytes": 68681728,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 227.421875,
+          "workingSetBytes": 285908992,
+          "privateCommitBytes": 208584704
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 123908096,
+          "privateCommitBytes": 71352320
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 60.0141239,
+      "cpuPercent": 0.9723177012276352,
+      "workingSetMiB": 711.80078125,
+      "privateCommitMiB": 491.18359375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.390625,
+          "workingSetBytes": 222986240,
+          "privateCommitBytes": 208805888
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.390625,
+          "workingSetBytes": 68419584,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 227.609375,
+          "workingSetBytes": 282460160,
+          "privateCommitBytes": 206696448
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124022784,
+          "privateCommitBytes": 71520256
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 62.0048864,
+      "cpuPercent": 1.2754221058514041,
+      "workingSetMiB": 713.203125,
+      "privateCommitMiB": 497.15234375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.515625,
+          "workingSetBytes": 222416896,
+          "privateCommitBytes": 208830464
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.4375,
+          "workingSetBytes": 67895296,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 227.84375,
+          "workingSetBytes": 284856320,
+          "privateCommitBytes": 212807680
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124190720,
+          "privateCommitBytes": 71643136
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 64.0158472,
+      "cpuPercent": 1.0198017037428082,
+      "workingSetMiB": 693.08203125,
+      "privateCommitMiB": 474.2265625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.640625,
+          "workingSetBytes": 224972800,
+          "privateCommitBytes": 211320832
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.453125,
+          "workingSetBytes": 67895296,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 228.03125,
+          "workingSetBytes": 260972544,
+          "privateCommitBytes": 186269696
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124420096,
+          "privateCommitBytes": 71651328
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 66.005557,
+      "cpuPercent": 0.883451697327922,
+      "workingSetMiB": 732.78125,
+      "privateCommitMiB": 512.71484375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.75,
+          "workingSetBytes": 225378304,
+          "privateCommitBytes": 211333120
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.453125,
+          "workingSetBytes": 67895296,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 228.203125,
+          "workingSetBytes": 302030848,
+          "privateCommitBytes": 226615296
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.6875,
+          "workingSetBytes": 124583936,
+          "privateCommitBytes": 71651328
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 68.0149712,
+      "cpuPercent": 1.0205866217129305,
+      "workingSetMiB": 706.78515625,
+      "privateCommitMiB": 490.69140625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.84375,
+          "workingSetBytes": 224808960,
+          "privateCommitBytes": 211296256
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67362816,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 228.40625,
+          "workingSetBytes": 277045248,
+          "privateCommitBytes": 203599872
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.703125,
+          "workingSetBytes": 123412480,
+          "privateCommitBytes": 71610368
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 70.0053761,
+      "cpuPercent": 1.1284607217355616,
+      "workingSetMiB": 732.58203125,
+      "privateCommitMiB": 513.3828125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 34.9375,
+          "workingSetBytes": 228917248,
+          "privateCommitBytes": 215261184
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67633152,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 228.65625,
+          "workingSetBytes": 298926080,
+          "privateCommitBytes": 223375360
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.71875,
+          "workingSetBytes": 124203008,
+          "privateCommitBytes": 71663616
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 72.0150123,
+      "cpuPercent": 0.9232858912473862,
+      "workingSetMiB": 726.4140625,
+      "privateCommitMiB": 507.0703125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.03125,
+          "workingSetBytes": 223223808,
+          "privateCommitBytes": 209117184
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67633152,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 228.828125,
+          "workingSetBytes": 297926656,
+          "privateCommitBytes": 222896128
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124428288,
+          "privateCommitBytes": 71667712
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 74.0061042,
+      "cpuPercent": 1.029978199399033,
+      "workingSetMiB": 742.26171875,
+      "privateCommitMiB": 522.5078125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.140625,
+          "workingSetBytes": 225480704,
+          "privateCommitBytes": 211247104
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67633152,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 229.046875,
+          "workingSetBytes": 312152064,
+          "privateCommitBytes": 236826624
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124563456,
+          "privateCommitBytes": 71794688
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 76.014623,
+      "cpuPercent": 1.0696626289980433,
+      "workingSetMiB": 717.3515625,
+      "privateCommitMiB": 491.6953125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.265625,
+          "workingSetBytes": 225378304,
+          "privateCommitBytes": 211070976
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67633152,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 229.265625,
+          "workingSetBytes": 285904896,
+          "privateCommitBytes": 204668928
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124792832,
+          "privateCommitBytes": 71815168
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 78.0047632,
+      "cpuPercent": 1.0304707427145088,
+      "workingSetMiB": 733.79296875,
+      "privateCommitMiB": 509.13671875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.328125,
+          "workingSetBytes": 222834688,
+          "privateCommitBytes": 208949248
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 67633152,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 229.53125,
+          "workingSetBytes": 306249728,
+          "privateCommitBytes": 225103872
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124231680,
+          "privateCommitBytes": 71790592
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 80.0034969,
+      "cpuPercent": 0.8306040219364881,
+      "workingSetMiB": 711.07421875,
+      "privateCommitMiB": 493.34765625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.484375,
+          "workingSetBytes": 225239040,
+          "privateCommitBytes": 211210240
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 229.640625,
+          "workingSetBytes": 281595904,
+          "privateCommitBytes": 206245888
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124493824,
+          "privateCommitBytes": 71831552
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 82.0050427,
+      "cpuPercent": 1.2685507870966515,
+      "workingSetMiB": 737.265625,
+      "privateCommitMiB": 521.46484375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.625,
+          "workingSetBytes": 224579584,
+          "privateCommitBytes": 210915328
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 229.90625,
+          "workingSetBytes": 309714944,
+          "privateCommitBytes": 236097536
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124497920,
+          "privateCommitBytes": 71757824
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 84.0168785,
+      "cpuPercent": 1.553307680477701,
+      "workingSetMiB": 734.60546875,
+      "privateCommitMiB": 517.39453125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.78125,
+          "workingSetBytes": 227033088,
+          "privateCommitBytes": 213299200
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.46875,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 230.25,
+          "workingSetBytes": 304300032,
+          "privateCommitBytes": 229404672
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124669952,
+          "privateCommitBytes": 71798784
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 86.005722,
+      "cpuPercent": 1.3748567949162405,
+      "workingSetMiB": 726.8984375,
+      "privateCommitMiB": 509.234375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 35.953125,
+          "workingSetBytes": 220725248,
+          "privateCommitBytes": 207163392
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.484375,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 230.5,
+          "workingSetBytes": 302297088,
+          "privateCommitBytes": 226861056
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.75,
+          "workingSetBytes": 124899328,
+          "privateCommitBytes": 71921664
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 88.0144032,
+      "cpuPercent": 1.3126616359032,
+      "workingSetMiB": 736.203125,
+      "privateCommitMiB": 518.7890625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.03125,
+          "workingSetBytes": 220655616,
+          "privateCommitBytes": 207097856
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.484375,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 230.828125,
+          "workingSetBytes": 311955456,
+          "privateCommitBytes": 236863488
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.765625,
+          "workingSetBytes": 125067264,
+          "privateCommitBytes": 72003584
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 90.0043854,
+      "cpuPercent": 1.4722179424519475,
+      "workingSetMiB": 719.44921875,
+      "privateCommitMiB": 502.0390625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.109375,
+          "workingSetBytes": 223121408,
+          "privateCommitBytes": 209387520
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 231.171875,
+          "workingSetBytes": 292503552,
+          "privateCommitBytes": 216965120
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.78125,
+          "workingSetBytes": 124485632,
+          "privateCommitBytes": 72048640
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 92.0154545,
+      "cpuPercent": 1.116865526898106,
+      "workingSetMiB": 704.90234375,
+      "privateCommitMiB": 487.42578125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.203125,
+          "workingSetBytes": 225214464,
+          "privateCommitBytes": 211226624
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 231.421875,
+          "workingSetBytes": 280510464,
+          "privateCommitBytes": 205234176
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.796875,
+          "workingSetBytes": 119132160,
+          "privateCommitBytes": 66617344
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 94.0042576,
+      "cpuPercent": 0.8838544650297465,
+      "workingSetMiB": 698.20703125,
+      "privateCommitMiB": 482.62890625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.328125,
+          "workingSetBytes": 226635776,
+          "privateCommitBytes": 213196800
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 231.578125,
+          "workingSetBytes": 271892480,
+          "privateCommitBytes": 198234112
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.796875,
+          "workingSetBytes": 119308288,
+          "privateCommitBytes": 66617344
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 96.0164095,
+      "cpuPercent": 1.1647977471283402,
+      "workingSetMiB": 721.375,
+      "privateCommitMiB": 505.20703125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.4375,
+          "workingSetBytes": 226828288,
+          "privateCommitBytes": 213061632
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 231.8125,
+          "workingSetBytes": 296124416,
+          "privateCommitBytes": 222183424
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.828125,
+          "workingSetBytes": 119177216,
+          "privateCommitBytes": 66478080
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 98.0047902,
+      "cpuPercent": 1.2769498818812668,
+      "workingSetMiB": 716.05078125,
+      "privateCommitMiB": 500.2109375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.546875,
+          "workingSetBytes": 224980992,
+          "privateCommitBytes": 210972672
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 232.09375,
+          "workingSetBytes": 292229120,
+          "privateCommitBytes": 219033600
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.84375,
+          "workingSetBytes": 119336960,
+          "privateCommitBytes": 66478080
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 100.0157809,
+      "cpuPercent": 1.456837915759635,
+      "workingSetMiB": 717.640625,
+      "privateCommitMiB": 502.0234375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.671875,
+          "workingSetBytes": 226484224,
+          "privateCommitBytes": 213024768
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.515625,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 232.421875,
+          "workingSetBytes": 291557376,
+          "privateCommitBytes": 218292224
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 120172544,
+          "privateCommitBytes": 67067904
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 102.0073381,
+      "cpuPercent": 1.422018534039593,
+      "workingSetMiB": 725.10546875,
+      "privateCommitMiB": 508.83984375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.765625,
+          "workingSetBytes": 226816000,
+          "privateCommitBytes": 213078016
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.53125,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 232.765625,
+          "workingSetBytes": 298950656,
+          "privateCommitBytes": 225386496
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 120274944,
+          "privateCommitBytes": 67067904
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 104.0117329,
+      "cpuPercent": 1.4129108946002056,
+      "workingSetMiB": 717.96484375,
+      "privateCommitMiB": 495.33984375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.859375,
+          "workingSetBytes": 227020800,
+          "privateCommitBytes": 213024768
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.53125,
+          "workingSetBytes": 65798144,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 233.125,
+          "workingSetBytes": 291819520,
+          "privateCommitBytes": 211324928
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 119713792,
+          "privateCommitBytes": 67026944
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 106.011191,
+      "cpuPercent": 0.7326203784915529,
+      "workingSetMiB": 680.64453125,
+      "privateCommitMiB": 459.98046875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 36.921875,
+          "workingSetBytes": 226525184,
+          "privateCommitBytes": 213082112
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.53125,
+          "workingSetBytes": 65527808,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 233.296875,
+          "workingSetBytes": 254357504,
+          "privateCommitBytes": 174616576
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 118808576,
+          "privateCommitBytes": 66600960
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 108.0102939,
+      "cpuPercent": 0.9770007336790932,
+      "workingSetMiB": 708.828125,
+      "privateCommitMiB": 492.51953125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.046875,
+          "workingSetBytes": 228941824,
+          "privateCommitBytes": 215179264
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.546875,
+          "workingSetBytes": 65404928,
+          "privateCommitBytes": 14364672
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 233.46875,
+          "workingSetBytes": 280875008,
+          "privateCommitBytes": 206594048
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 119549952,
+          "privateCommitBytes": 66646016
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 110.0101561,
+      "cpuPercent": 0.9766297897925119,
+      "workingSetMiB": 697.47265625,
+      "privateCommitMiB": 484.56640625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.1875,
+          "workingSetBytes": 223072256,
+          "privateCommitBytes": 209002496
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.546875,
+          "workingSetBytes": 65404928,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 233.640625,
+          "workingSetBytes": 274710528,
+          "privateCommitBytes": 204484608
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 119676928,
+          "privateCommitBytes": 66596864
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 112.0107664,
+      "cpuPercent": 1.0738910521454426,
+      "workingSetMiB": 712.08203125,
+      "privateCommitMiB": 496.265625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.28125,
+          "workingSetBytes": 225492992,
+          "privateCommitBytes": 211419136
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.546875,
+          "workingSetBytes": 65536000,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 233.890625,
+          "workingSetBytes": 287207424,
+          "privateCommitBytes": 214212608
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.859375,
+          "workingSetBytes": 119947264,
+          "privateCommitBytes": 66719744
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 114.0100045,
+      "cpuPercent": 1.3188617954009583,
+      "workingSetMiB": 701.26953125,
+      "privateCommitMiB": 484.86328125,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.40625,
+          "workingSetBytes": 223346688,
+          "privateCommitBytes": 209031168
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.546875,
+          "workingSetBytes": 65536000,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 234.171875,
+          "workingSetBytes": 277995520,
+          "privateCommitBytes": 204865536
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.875,
+          "workingSetBytes": 119967744,
+          "privateCommitBytes": 66498560
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 116.0109139,
+      "cpuPercent": 1.0737305247303988,
+      "workingSetMiB": 709.20703125,
+      "privateCommitMiB": 494.1484375,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.578125,
+          "workingSetBytes": 224894976,
+          "privateCommitBytes": 211349504
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.546875,
+          "workingSetBytes": 65536000,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 234.34375,
+          "workingSetBytes": 285401088,
+          "privateCommitBytes": 212238336
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.875,
+          "workingSetBytes": 119336960,
+          "privateCommitBytes": 66543616
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 118.0094881,
+      "cpuPercent": 1.0261221474789413,
+      "workingSetMiB": 682.9609375,
+      "privateCommitMiB": 467.390625,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.71875,
+          "workingSetBytes": 224907264,
+          "privateCommitBytes": 211288064
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.59375,
+          "workingSetBytes": 65536000,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 234.484375,
+          "workingSetBytes": 257769472,
+          "privateCommitBytes": 184254464
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.875,
+          "workingSetBytes": 119435264,
+          "privateCommitBytes": 66531328
+        }
+      ]
+    },
+    {
+      "elapsedSeconds": 120.0099639,
+      "cpuPercent": 0.9763302310380342,
+      "workingSetMiB": 707.078125,
+      "privateCommitMiB": 492.9296875,
+      "processes": [
+        {
+          "id": 13472,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 37.859375,
+          "workingSetBytes": 225148928,
+          "privateCommitBytes": 211255296
+        },
+        {
+          "id": 14012,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 0.078125,
+          "workingSetBytes": 48488448,
+          "privateCommitBytes": 13660160
+        },
+        {
+          "id": 14280,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 50.59375,
+          "workingSetBytes": 65536000,
+          "privateCommitBytes": 14360576
+        },
+        {
+          "id": 15932,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 234.65625,
+          "workingSetBytes": 282685440,
+          "privateCommitBytes": 211066880
+        },
+        {
+          "id": 24692,
+          "name": "COUGAR LCD Editor",
+          "cpuSeconds": 1.875,
+          "workingSetBytes": 119566336,
+          "privateCommitBytes": 66531328
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "label": "purrlcd",
+  "startedAt": "2026-10-05T16:11:16.1656764+03:00",
+  "durationSeconds": 120.0046353,
+  "logicalProcessors": 16,
+  "processIds": [
+    25148
+  ],
+  "processNames": [
+    "PurrLCD"
+  ],
+  "cpuPercentAverage": 0.03987476182097109,
+  "cpuPercentPeakSample": 0.0982647099975402,
+  "workingSetMiBAverage": 24.550716145833334,
+  "workingSetMiBMin": 24.50390625,
+  "workingSetMiBMax": 27.0546875,
+  "privateCommitMiBAverage": 74.60208333333334,
+  "privateCommitMiBMin": 74.453125,
+  "privateCommitMiBMax": 77.390625,
+  "initialProcesses": {
+    "id": 25148,
+    "name": "PurrLCD",
+    "cpuSeconds": 123.84375,
+    "workingSetBytes": 28368896,
+    "privateCommitBytes": 81149952
+  },
+  "finalProcesses": {
+    "id": 25148,
+    "name": "PurrLCD",
+    "cpuSeconds": 124.609375,
+    "workingSetBytes": 25702400,
+    "privateCommitBytes": 78213120
+  },
+  "samples": [
+    {
+      "elapsedSeconds": 2.0246818,
+      "cpuPercent": 0.048232887755498166,
+      "workingSetMiB": 27.0546875,
+      "privateCommitMiB": 77.390625,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.859375,
+        "workingSetBytes": 28368896,
+        "privateCommitBytes": 81149952
+      }
+    },
+    {
+      "elapsedSeconds": 4.0049217,
+      "cpuPercent": 0.04931536325472485,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.875,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 6.0072192,
+      "cpuPercent": 0.04877209805236235,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.890625,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 8.0049559,
+      "cpuPercent": 0.048883443949345254,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.90625,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 10.0069613,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.90625,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 12.017812,
+      "cpuPercent": 0.04856464480431096,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.921875,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 14.0054279,
+      "cpuPercent": 0.0982647099975402,
+      "workingSetMiB": 24.50390625,
+      "privateCommitMiB": 74.57421875,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.953125,
+        "workingSetBytes": 25694208,
+        "privateCommitBytes": 78196736
+      }
+    },
+    {
+      "elapsedSeconds": 16.0043148,
+      "cpuPercent": 0.09771063085160052,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.984375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 18.0044725,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.984375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 20.0056484,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 123.984375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 22.0050384,
+      "cpuPercent": 0.04884302212174709,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.0,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 24.0066946,
+      "cpuPercent": 0.04878772388585014,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.015625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 26.0051232,
+      "cpuPercent": 0.04886651942431167,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.03125,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 28.0058583,
+      "cpuPercent": 0.09762036963314134,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.0625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 30.004828,
+      "cpuPercent": 0.04885329177325699,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.078125,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 32.0052333,
+      "cpuPercent": 0.04881823198528817,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.09375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 34.0056531,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.09375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 36.0044985,
+      "cpuPercent": 0.04885632975917013,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.109375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 38.0051099,
+      "cpuPercent": 0.04881320280390275,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.125,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 40.010208,
+      "cpuPercent": 0.09740795225929355,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.15625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 42.016043,
+      "cpuPercent": 0.048686083351820945,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.171875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 44.0054684,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.171875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 46.0047984,
+      "cpuPercent": 0.04884448790344764,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.1875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 48.0047525,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.1875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 50.0046757,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.1875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 52.004691,
+      "cpuPercent": 0.09765550293540248,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.21875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 54.0053183,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.21875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 56.0048986,
+      "cpuPercent": 0.04883837373272786,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.234375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 58.005997,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.234375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 60.0157995,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.234375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 62.0059572,
+      "cpuPercent": 0.049069603881139734,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.25,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 64.0056616,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.25,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 66.0049208,
+      "cpuPercent": 0.048846217639013555,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.265625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 68.0044396,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.265625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 70.0055494,
+      "cpuPercent": 0.048801045299962834,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.28125,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 72.0044933,
+      "cpuPercent": 0.04885392231367807,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.296875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 74.0049111,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.578125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.296875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78200832
+      }
+    },
+    {
+      "elapsedSeconds": 76.004836,
+      "cpuPercent": 0.0488299585649442,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.453125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.3125,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78069760
+      }
+    },
+    {
+      "elapsedSeconds": 78.004634,
+      "cpuPercent": 0.09766611427754211,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.34375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 80.0054153,
+      "cpuPercent": 0.04880905774159325,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.359375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 82.0048463,
+      "cpuPercent": 0.09768404110969564,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.390625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 84.0055242,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.390625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 86.0048832,
+      "cpuPercent": 0.04884377943130778,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.40625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 88.004602,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.40625,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 90.0040744,
+      "cpuPercent": 0.048841009258242626,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.421875,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 92.0042944,
+      "cpuPercent": 0.04882275449700501,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.4375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 94.0058218,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.5078125,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.4375,
+        "workingSetBytes": 25698304,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 96.0054873,
+      "cpuPercent": 0.0976725857399654,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.46875,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 98.0047536,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.45703125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.46875,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78073856
+      }
+    },
+    {
+      "elapsedSeconds": 100.0045192,
+      "cpuPercent": 0.048833848327023845,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58203125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.484375,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78204928
+      }
+    },
+    {
+      "elapsedSeconds": 102.0048871,
+      "cpuPercent": 0.04881914471832905,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58203125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.5,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78204928
+      }
+    },
+    {
+      "elapsedSeconds": 104.0056789,
+      "cpuPercent": 0.09761760319089664,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58203125,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.53125,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78204928
+      }
+    },
+    {
+      "elapsedSeconds": 106.0050731,
+      "cpuPercent": 0.09768583904064553,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.5625,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 108.0048752,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.5625,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 110.0071552,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.5625,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 112.0054118,
+      "cpuPercent": 0.04887072561151544,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.578125,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 114.003811,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.578125,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 116.0050064,
+      "cpuPercent": 0.0,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.578125,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 118.0048959,
+      "cpuPercent": 0.04883082290296552,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.59375,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    },
+    {
+      "elapsedSeconds": 120.0046353,
+      "cpuPercent": 0.04883448813380359,
+      "workingSetMiB": 24.51171875,
+      "privateCommitMiB": 74.58984375,
+      "processes": {
+        "id": 25148,
+        "name": "PurrLCD",
+        "cpuSeconds": 124.609375,
+        "workingSetBytes": 25702400,
+        "privateCommitBytes": 78213120
+      }
+    }
+  ]
+}

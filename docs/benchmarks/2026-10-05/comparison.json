@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-05",
+  "sampleIntervalSeconds": 2,
+  "logicalProcessors": 16,
+  "cpuRatio": 28.080385791693285,
+  "purrlcd": {
+    "startedAt": "2026-10-05T16:11:16.1656764+03:00",
+    "durationSeconds": 120.0046353,
+    "cpuPercentAverage": 0.03987476182097109,
+    "cpuPercentPeakSample": 0.0982647099975402,
+    "workingSetMiBAverage": 24.550716145833334,
+    "workingSetMiBMin": 24.50390625,
+    "workingSetMiBMax": 27.0546875,
+    "privateCommitMiBAverage": 74.60208333333334,
+    "privateCommitMiBMin": 74.453125,
+    "privateCommitMiBMax": 77.390625
+  },
+  "cougarTray": {
+    "startedAt": "2026-10-05T16:25:34.3125784+03:00",
+    "durationSeconds": 120.0099639,
+    "cpuPercentAverage": 1.1196986952847505,
+    "cpuPercentPeakSample": 1.6474792268452718,
+    "workingSetMiBAverage": 713.5536458333333,
+    "workingSetMiBMin": 678.2734375,
+    "workingSetMiBMax": 742.26171875,
+    "privateCommitMiBAverage": 494.21673177083335,
+    "privateCommitMiBMin": 455.8203125,
+    "privateCommitMiBMax": 522.5078125
+  },
+  "cougarProcesses": [
+    {
+      "id": 13472,
+      "cpuPercent": 0.37920028488567853,
+      "workingSetMiBAverage": 214.13997395833334,
+      "privateCommitMiBAverage": 200.98580729166667
+    },
+    {
+      "id": 14012,
+      "cpuPercent": 0.0,
+      "workingSetMiBAverage": 46.2517578125,
+      "privateCommitMiBAverage": 13.040625
+    },
+    {
+      "id": 14280,
+      "cpuPercent": 0.025225770024583767,
+      "workingSetMiBAverage": 66.35240885416667,
+      "privateCommitMiBAverage": 13.71171875
+    },
+    {
+      "id": 15932,
+      "cpuPercent": 0.6981842155191249,
+      "workingSetMiBAverage": 269.3336588541667,
+      "privateCommitMiBAverage": 199.28977864583334
+    },
+    {
+      "id": 24692,
+      "cpuPercent": 0.0170884248553632,
+      "workingSetMiBAverage": 117.47584635416666,
+      "privateCommitMiBAverage": 67.18880208333333
+    }
+  ]
+}
