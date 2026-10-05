@@ -1,14 +1,13 @@
 package purrlcd.ui.tooling
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import purrlcd.ui.EditorContent
+import purrlcd.ui.theme.EditorDimensions
 
 @Preview(name = "Screen", group = "Editor", widthDp = 1280, heightDp = 850)
 @Composable
@@ -33,7 +32,7 @@ private fun EditorPagePreview(page: Int) {
     var scene by remember { mutableStateOf(PreviewSamples.scene) }
     var saved by remember { mutableStateOf(scene) }
     var status by remember { mutableStateOf(PreviewSamples.status) }
-    PreviewFrame(1280.dp, 850.dp) {
+    PreviewFrame(EditorDimensions.WindowWidth, EditorDimensions.WindowHeight) {
         EditorContent(
             scene = scene,
             status = status,

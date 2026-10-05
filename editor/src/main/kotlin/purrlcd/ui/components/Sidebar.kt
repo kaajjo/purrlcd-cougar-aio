@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,9 +26,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.stringResource
 import purrlcd.resources.Res
 import purrlcd.resources.sidebar_editor
@@ -39,62 +36,119 @@ import purrlcd.resources.sidebar_screen
 import purrlcd.resources.sidebar_settings
 import purrlcd.resources.sidebar_tagline
 import purrlcd.ui.theme.Bg
+import purrlcd.ui.theme.EditorDimensions
+import purrlcd.ui.theme.EditorShapes
+import purrlcd.ui.theme.EditorSpacing
+import purrlcd.ui.theme.EditorTypography
+import purrlcd.ui.theme.FaintInk
 import purrlcd.ui.theme.Good
 import purrlcd.ui.theme.Line
 import purrlcd.ui.theme.Muted
 import purrlcd.ui.theme.Orange
 import purrlcd.ui.theme.Panel
+import purrlcd.ui.theme.SelectedNavigationSurface
+import purrlcd.ui.theme.SidebarSurface
+import purrlcd.ui.theme.editorTextStyle
 
 @Composable
 fun Sidebar(page: Int, onPage: (Int) -> Unit, ready: Boolean) {
-    Column(Modifier.width(187.dp).fillMaxHeight().background(Color(0xFF101318)).padding(20.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            Box(Modifier.size(30.dp).clip(RoundedCornerShape(9.dp)).background(Orange), contentAlignment = Alignment.Center) {
-                Canvas(Modifier.size(17.dp)) {
-                    drawRoundRect(Bg, Offset(2f, 2f), Size(size.width - 4f, size.height - 4f), CornerRadius(4f), style = Stroke(2.3f))
-                    drawLine(Bg, Offset(size.width * .35f, size.height * .55f), Offset(size.width * .7f, size.height * .55f), 2.3f, StrokeCap.Round)
+    Column(
+        Modifier.width(EditorDimensions.SidebarWidth).fillMaxHeight().background(SidebarSurface)
+            .padding(EditorSpacing.Space24)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space12)
+        ) {
+            Box(
+                Modifier.size(30.dp).clip(EditorShapes.CompactButton).background(Orange),
+                contentAlignment = Alignment.Center
+            ) {
+                Canvas(Modifier.size(EditorDimensions.IconSize)) {
+                    drawRoundRect(
+                        Bg,
+                        Offset(2f, 2f),
+                        Size(size.width - 4f, size.height - 4f),
+                        CornerRadius(4f),
+                        style = Stroke(2.3f)
+                    )
+                    drawLine(
+                        Bg,
+                        Offset(size.width * .35f, size.height * .55f),
+                        Offset(size.width * .7f, size.height * .55f),
+                        2.3f,
+                        StrokeCap.Round
+                    )
                 }
             }
-            Text("purr\nlcd", fontWeight = FontWeight.Bold, fontSize = 17.sp, lineHeight = 17.sp, letterSpacing = -.5.sp)
+            Text("purr\nlcd", style = editorTextStyle(EditorTypography.Brand))
         }
-        Spacer(Modifier.height(44.dp))
-        listOf(stringResource(Res.string.sidebar_screen), stringResource(Res.string.sidebar_editor), stringResource(Res.string.sidebar_settings)).forEachIndexed { index, label ->
+        Spacer(Modifier.height(EditorSpacing.Space48))
+        listOf(
+            stringResource(Res.string.sidebar_screen),
+            stringResource(Res.string.sidebar_editor),
+            stringResource(Res.string.sidebar_settings)
+        ).forEachIndexed { index, label ->
             val selected = index == page
-            Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(if (selected) Color(0xFF2B241F) else Color.Transparent)
-                .clickable { onPage(index) }.padding(horizontal = 13.dp, vertical = 13.dp),
-                verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(
+                Modifier.fillMaxWidth().clip(EditorShapes.Button)
+                    .background(if (selected) SelectedNavigationSurface else Color.Transparent)
+                    .clickable { onPage(index) }
+                    .padding(horizontal = EditorSpacing.Space12, vertical = EditorSpacing.Space12),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space12)
+            ) {
                 NavIcon(index, if (selected) Orange else Muted)
-                Text(label, color = if (selected) Orange else Muted, fontSize = 13.sp, fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal)
+                Text(
+                    label,
+                    color = if (selected) Orange else Muted,
+                    style = editorTextStyle(if (selected) EditorTypography.NavigationSelected else EditorTypography.Navigation)
+                )
             }
-            Spacer(Modifier.height(7.dp))
+            Spacer(Modifier.height(EditorSpacing.Space8))
         }
         Spacer(Modifier.weight(1f))
         Divider(color = Line)
-        Spacer(Modifier.height(17.dp))
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Spacer(Modifier.height(EditorSpacing.Space16))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(EditorSpacing.Space8)
+        ) {
             Dot(if (ready) Good else Muted)
-            Text(if (ready) stringResource(Res.string.sidebar_engine_running) else stringResource(Res.string.sidebar_engine_missing), color = Muted, fontSize = 10.sp)
+            Text(
+                if (ready) stringResource(Res.string.sidebar_engine_running) else stringResource(Res.string.sidebar_engine_missing),
+                color = Muted,
+                style = editorTextStyle(EditorTypography.Hint)
+            )
         }
-        Spacer(Modifier.height(8.dp))
-        Text(stringResource(Res.string.sidebar_tagline), color = Color(0xFF626A79), fontSize = 9.sp)
+        Spacer(Modifier.height(EditorSpacing.Space8))
+        Text(
+            stringResource(Res.string.sidebar_tagline),
+            color = FaintInk,
+            style = editorTextStyle(EditorTypography.FinePrint)
+        )
     }
 }
 
 @Composable
 private fun NavIcon(kind: Int, color: Color) {
-    Canvas(Modifier.size(17.dp)) {
-        val w = size.width; val h = size.height; val s = 1.5.dp.toPx()
+    Canvas(Modifier.size(EditorDimensions.IconSize)) {
+        val w = size.width;
+        val h = size.height;
+        val s = EditorDimensions.IconStroke.toPx()
         when (kind) {
             0 -> {
                 drawRoundRect(color, Offset(1f, h * .1f), Size(w - 2f, h * .67f), CornerRadius(3f), style = Stroke(s))
                 drawLine(color, Offset(w * .5f, h * .78f), Offset(w * .5f, h * .98f), s)
                 drawLine(color, Offset(w * .3f, h * .98f), Offset(w * .7f, h * .98f), s, StrokeCap.Round)
             }
+
             1 -> {
                 drawLine(color, Offset(w * .2f, h * .8f), Offset(w * .8f, h * .2f), s * 2, StrokeCap.Round)
                 drawLine(color, Offset(w * .65f, h * .18f), Offset(w * .82f, h * .35f), s, StrokeCap.Round)
                 drawLine(color, Offset(w * .15f, h * .9f), Offset(w * .85f, h * .9f), s, StrokeCap.Round)
             }
+
             else -> {
                 repeat(3) { i ->
                     val y = h * (.2f + i * .3f)

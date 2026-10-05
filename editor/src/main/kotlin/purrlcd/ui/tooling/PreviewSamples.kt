@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import purrlcd.engine.EngineStatus
 import purrlcd.model.Scene
+import purrlcd.ui.theme.EditorDimensions
+import purrlcd.ui.theme.EditorSpacing
 import purrlcd.ui.theme.Panel
 import purrlcd.ui.theme.PurrLCDTheme
 
@@ -34,10 +36,10 @@ fun PreviewFrame(width: Dp, height: Dp, content: @Composable () -> Unit) {
 
 @Composable
 fun PanelPreviewFrame(content: @Composable ColumnScope.() -> Unit) {
-    PreviewFrame(326.dp, 800.dp) {
+    PreviewFrame(EditorDimensions.InspectorWidth, 800.dp) {
         Column(
             Modifier.fillMaxSize().background(Panel)
-                .verticalScroll(rememberScrollState()).padding(24.dp),
+                .verticalScroll(rememberScrollState()).padding(EditorSpacing.Space24),
             content = content
         )
     }
