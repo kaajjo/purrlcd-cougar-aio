@@ -1,92 +1,75 @@
 # PurrLCD
 
-Лёгкое приложение для LCD-экрана водянки: фоновый движок на **C++17** и отдельный редактор на **Compose Desktop**. Имя репозитория: `purrlcd-cougar-aio`.
+A replacement for COUGAR LCDEditor, with a C++ background process and a separate Compose Desktop / Material 3 editor. Close the editor and the LCD keeps running without the JVM.
 
-Проверено на **COUGAR Poseidon Vistek Pro ARGB 360**, экране 720 × 720, USB HID `1D6B:0110`, Windows x64, Ryzen 7 5700X и Radeon RX 9070 XT. Совместимость с другими устройствами и процессорами пока не подтверждена.
+## Hardware
 
-PurrLCD — независимый неофициальный проект, не связанный с COUGAR и не одобренный производителем. Название производителя используется для описания совместимости. Логотипы и файлы штатного приложения в проект не входят.
+**This project is currently built specifically for my own hardware. Support for other setups has not been implemented or verified.**
 
-## Возможности
+- **AIO:** COUGAR Poseidon Vistek Pro ARGB 360, 720 × 720 LCD, USB HID `1D6B:0110`
+- **CPU:** AMD Ryzen 7 5700X
+- **GPU:** AMD Radeon RX 9070 XT
+- **OS:** Windows x64
 
-- Изображение или однотонный фон.
-- Температуры CPU/GPU, подписи, координаты, размеры и цвета текста.
-- Поворот 0/90/180/270° и интервал обновления от 1 до 5 секунд.
-- Предпросмотр от того же C++-движка, который формирует изображение для LCD.
-- Сохранение оформления, импорт существующего фона и расположения надписей.
-- Работа из трея и восстановление подключения после перезапуска движка.
+CPU temperature uses an installed [PawnIO](https://pawnio.eu/) driver and the bundled `AMDFamily17.bin` module. The current sensor implementation targets AMD family 19h/model 21h and requires the background process to run as administrator. GPU temperature uses AMD ADLX from the installed AMD driver. PurrLCD does not install either driver.
 
-Окно Compose нужно только для настройки. При его закрытии JVM полностью завершается, а C++-процесс продолжает обновлять экран. Подложка передаётся при изменении; слой температур — при изменении отображаемых целых значений, с контрольным обновлением через 20 секунд.
+## Features
 
-Пока нет GIF/видео, произвольного набора слоёв, drag-and-drop и автоматического запуска при входе в Windows. Управления помпой, вентиляторами, напряжениями и частотами нет.
+- Image or solid-color background.
+- CPU/GPU temperatures with editable labels, positions, font sizes and colors.
+- Live preview with draggable temperature layers.
+- Display rotation in 90° steps and a 1–5 second update interval.
+- Saved layouts, tray controls and reconnection after restarting the background process.
 
-## Запуск локальной сборки
+No GIF/video playback, custom layer types, Windows startup registration, or pump/fan control yet.
 
-1. Закройте штатный **COUGAR LCD Editor**, включая его процесс в трее.
-2. Запустите `app/editor/PurrLCDEditor.exe`. Java включена в локальную сборку.
-3. Подтвердите запрос Windows для фонового процесса: доступ к датчику CPU требует администратора. Редактор остаётся обычным процессом.
-4. Выберите оформление, нажмите **«Применить»** и **«Подключить»**.
-5. Закройте окно редактора. Открыть его снова или завершить движок можно через значок PurrLCD в трее.
+## Compared with LCDEditor
 
-После успешного подключения настройка возобновления сохраняется. **«Остановить»** отключает её. На чистой конфигурации подключение выполняется явно. При отмене запроса Windows повторных запросов нет; для новой попытки перезапустите редактор.
+Observed on the hardware listed above, with the LCD running:
 
-Фон и настройки находятся в `app/data`. Их можно переносить вместе с папкой `app`. При импорте исходные настройки штатной программы не изменяются. Папка `app`, личные изображения, журналы и настройки не входят в Git.
+| Resource | Original LCDEditor | PurrLCD, editor closed |
+| --- | --- | --- |
+| CPU usage | ~1.2% continuously | 0.022–0.034% |
+| Memory | 200–300 MiB | 30.4–36.9 MiB working set |
 
-## Датчики
+The LCDEditor figures are my observations. PurrLCD figures come from two 40-second runs; its private commit was 71.6–73.0 MiB. The memory counter used for the LCDEditor figure is unspecified, so the memory figures are approximate comparisons. See [measurement notes](engine/sensors-vendor/MEASUREMENTS.txt).
 
-- **CPU:** Ryzen Tctl/Tdie через установленный официальный [PawnIO](https://pawnio.eu/) и заменяемый модуль `AMDFamily17.bin`. Поддерживаемый сейчас вариант — AMD family 19h/model 21h, включая Ryzen 7 5700X. Используется фиксированный регистр температуры. Приложение не устанавливает драйвер и не меняет его права доступа.
-- **GPU:** необязательная интеграция AMD ADLX из установленного драйвера. Для её сборки нужны внешние заголовки SDK, распространяемые AMD на собственных условиях.
-- Недоступные значения отображаются как **«—»**; состояние датчиков можно посмотреть в настройках.
+The open PurrLCD editor was measured at about **285 MiB working set**. It exits completely when closed; only the C++ process remains.
 
-## Потребление ресурсов
+## Build
 
-В двух замерах по 40 секунд на указанном выше компьютере, при закрытом редакторе и работающем LCD: **0,022–0,034% общей загрузки CPU**, **30,4–36,9 МиБ рабочего набора** и **71,6–73,0 МиБ выделенной памяти**. Разные столбцы диспетчера задач показывают разные виды памяти; эти значения не следует сравнивать напрямую. Короткие замеры не гарантируют такой же результат на другом компьютере.
+Requires Windows x64, an x64 **LLVM-MinGW** compiler with C++17 support, **JDK 21**, and internet access for the first build. Close PurrLCD and its editor before building.
 
-Открытый Compose-редактор расходует больше памяти — в проверке около 285 МиБ рабочего набора. После закрытия его процессов не остаётся. Подробности отдельных датчиков: [MEASUREMENTS.txt](engine/sensors-vendor/MEASUREMENTS.txt).
-
-## Сборка
-
-Нужны Windows x64, LLVM-MinGW для x64/C++17, JDK 21 и интернет для первой загрузки Gradle/Kotlin/Compose. Зафиксированы Kotlin 2.4.20, Compose 1.12.1 и Gradle 9.6.0. Компилятор Clang для MSVC не подходит к указанным флагам.
-
-Без необязательного AMD SDK (температура GPU будет недоступна):
-
-```powershell
-.\build.ps1 -Clang C:\tools\llvm-mingw\bin\x86_64-w64-mingw32-clang++.exe
-```
-
-С интеграцией ADLX:
+To build with GPU temperature support:
 
 ```powershell
 .\engine\sensors-vendor\fetch-adlx.ps1 -Destination .\.tools\adlx-1.5
 .\build.ps1 `
-  -Clang .\.tools\llvm-mingw\bin\x86_64-w64-mingw32-clang++.exe `
+  -Clang C:\tools\llvm-mingw\bin\x86_64-w64-mingw32-clang++.exe `
   -AdlxInclude .\.tools\adlx-1.5
 ```
 
-`-SkipEditor` собирает только движок. Перед сборкой завершите движок и редактор. Скрипт запускает проверки протокола и редактора, затем обновляет `app/engine` и `app/editor`, сохраняя `app/data`. Приложение и драйверы при сборке не запускаются.
+Omit `-AdlxInclude` to build without ADLX; GPU temperature will be unavailable. `-SkipEditor` builds only the background process. The build runs tests and writes the application to `app/`, preserving `app/data/`. Java is included in the editor package.
 
-```text
-engine/        C++: датчики, отрисовка, USB HID, локальный IPC и трей
-editor/        Kotlin + Compose Desktop
-app/           локальная сборка и личные данные; игнорируется Git
-.work/         результаты сборки и кеши; игнорируется Git
-.tools/        локальные инструменты и внешний SDK; игнорируется Git
-.local/        локальные помощники и резервные копии; игнорируется Git
-```
+## Run
 
-Процессы общаются через локальный именованный канал `PurrLCD-<имя пользователя>`. Каждый запрос: длина `uint32 little-endian` и JSON UTF-8 до 1 МиБ. Канал ограничен текущим пользователем; команды оболочки через него не выполняются.
+1. Exit the original LCDEditor, including its tray process.
+2. Launch `app/editor/PurrLCDEditor.exe` and approve elevation for the background process.
+3. Edit the layout, click **Apply**, then **Connect**.
+4. Close the editor. Use the tray icon to reopen it or exit PurrLCD.
 
-## Проверки
+A successful connection enables reconnection on the next launch. **Stop** disables it. Settings and backgrounds are stored in `app/data/`; keep that folder when moving the application.
 
-Протокол проверен на 625 кадрах штатного приложения, синтетических файловых блоках и реальном LCD. Проверены фон, прозрачный PNG-слой `.osd`, обновления температур, сохранение настроек и работа после закрытия редактора. См. [описание протокола](engine/PROTOCOL.md).
+## Source
 
-Два теста редактора проверяют обмен JSON и тайм-аут зависшего канала без зависания интерфейса. Дополнительная проверка уже работающего движка не изменяет сохранённую сцену и не отправляет команды управления устройством:
+- [`engine/`](engine/) — sensors, rendering, USB HID, IPC and tray controls; [LCD protocol notes](engine/PROTOCOL.md).
+- [`editor/`](editor/) — Kotlin / Compose Desktop editor; [build and development notes](editor/README.md).
+- `app/`, `.work/`, `.tools/` — local application, build output and tools; excluded from Git.
 
-```powershell
-python engine/integration_test.py --allow-connected --require-temperatures
-```
+## License
 
-## Лицензии
+[MIT](LICENSE) for PurrLCD's own code. See [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licenses, including the optional AMD ADLX SDK.
 
-Собственный код PurrLCD распространяется под [MIT](LICENSE). Сторонние компоненты сохраняют собственные лицензии: [THIRD_PARTY.md](THIRD_PARTY.md).
+Unofficial project, not affiliated with COUGAR.
 
-AMD ADLX является необязательной внешней зависимостью с отдельным SDK-соглашением. SDK, DLL драйвера и готовые бинарники не входят в этот репозиторий. При подготовке публичного бинарного релиза с ADLX необходимо отдельно учесть условия его распространения; MIT проекта не заменяет эти условия.
+Developed with assistance from ChatGPT Codex.
