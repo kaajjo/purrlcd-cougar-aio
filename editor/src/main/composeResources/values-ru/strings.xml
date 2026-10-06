@@ -67,6 +67,9 @@
     <string name="settings_refresh_hint">Более редкое обновление уменьшает количество обращений к датчикам и экрану.</string>
     <string name="settings_refresh_interval">Раз в %1$d сек</string>
     <string name="settings_rotation_heading">ПОВОРОТ ЭКРАНА</string>
+    <string name="settings_brightness_heading">ЯРКОСТЬ</string>
+    <string name="settings_brightness_value">%1$d%</string>
+    <string name="settings_brightness_hint">Нажмите «Применить», чтобы изменить подсветку. При 0% экран остаётся слабо подсвеченным.</string>
     <string name="settings_rotation_hint">Выберите ориентацию под положение водоблока. Предпросмотр показывает оформление прямо.</string>
     <string name="sidebar_editor">Редактор</string>
     <string name="sidebar_engine_missing">Движок не найден</string>

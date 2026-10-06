@@ -16,14 +16,14 @@ static bool validColor(const std::string& s) {
     return s.find_first_not_of("0123456789abcdefABCDEF", 1) == std::string::npos;
 }
 Json defaultScene() {
-    return {{"backgroundPath", ""}, {"backgroundColor", "#111318"}, {"rotation", 180}, {"intervalMs", 1000},
+    return {{"backgroundPath", ""}, {"backgroundColor", "#111318"}, {"rotation", 180}, {"intervalMs", 1000}, {"brightness", 100},
         {"cpu", {{"enabled", true}, {"x", 40}, {"y", 565}, {"fontSize", 44}, {"color", "#FFFFFF"}, {"label", "CPU"}}},
         {"gpu", {{"enabled", true}, {"x", 40}, {"y", 625}, {"fontSize", 44}, {"color", "#FF954F"}, {"label", "GPU"}}}};
 }
 Json validateScene(const Json& input) {
     if (!input.is_object()) throw std::runtime_error("Scene must be an object");
     Json out = defaultScene();
-    for (const auto& k : {"backgroundPath", "backgroundColor", "rotation", "intervalMs"})
+    for (const auto& k : {"backgroundPath", "backgroundColor", "rotation", "intervalMs", "brightness"})
         if (input.contains(k)) out[k] = input[k];
     auto p = out.at("backgroundPath").get<std::string>();
     if (p.size() > 32700) throw std::runtime_error("Background path is too long");
@@ -34,6 +34,9 @@ Json validateScene(const Json& input) {
     if (rotation != 0 && rotation != 90 && rotation != 180 && rotation != 270) throw std::runtime_error("Invalid rotation");
     int interval = out.at("intervalMs").get<int>();
     if (interval < 1000 || interval > 5000) throw std::runtime_error("Interval must be between 1 and 5 seconds");
+    if (!out.at("brightness").is_number_integer()) throw std::runtime_error("Brightness must be an integer");
+    const auto& brightness = out.at("brightness");
+    if (brightness < 0 || brightness > 100) throw std::runtime_error("Brightness must be between 0 and 100 percent");
     for (const auto& k : {"cpu", "gpu"}) {
         if (input.contains(k)) {
             if (!input[k].is_object()) throw std::runtime_error("Invalid text layer");

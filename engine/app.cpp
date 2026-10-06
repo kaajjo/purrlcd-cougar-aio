@@ -175,7 +175,7 @@ void worker() {
                         Json info = display.open();
                         { std::lock_guard<std::mutex> lock(state.mutex);
                           state.deviceInfo = info.dump(); state.message = "Preparing display..."; }
-                        display.configure(renderer.background(scene), scene["rotation"].get<int>());
+                        display.configure(renderer.background(scene), scene["rotation"].get<int>(), scene["brightness"].get<int>());
                         configuredRevision = revision; lastKey.clear();
                         std::lock_guard<std::mutex> lock(state.mutex);
                         if (state.powerRevision != powerRevision || state.suspended || !state.wanted) continue;
@@ -200,7 +200,7 @@ void worker() {
                     SensorSnapshot values;
                     { std::lock_guard<std::mutex> lock(state.mutex); values = state.values; }
                     if (configuredRevision != revision) {
-                        display.configure(renderer.background(scene), scene["rotation"].get<int>());
+                        display.configure(renderer.background(scene), scene["rotation"].get<int>(), scene["brightness"].get<int>());
                         configuredRevision = revision; lastKey.clear();
                     }
                     auto key = visualKey(scene, values);

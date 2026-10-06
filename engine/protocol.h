@@ -7,6 +7,8 @@
 
 namespace purrlcd {
 using Bytes = std::vector<std::uint8_t>;
+// Vendor slider 0..100 maps to device backlight values 10..100.
+int brightnessValue(int percent);
 // Encodes the command frame only, without HID report ID or padding.
 // Empty jsonBody omits ContentType and ContentLength, as in POST conn.
 Bytes encodeRequest(const std::string& method, const std::string& command,

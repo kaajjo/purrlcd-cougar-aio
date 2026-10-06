@@ -9,7 +9,7 @@ A replacement for COUGAR LCDEditor, with a C++ background process and a separate
 - Image or solid-color background.
 - CPU/GPU temperatures with editable labels, positions, font sizes and colors.
 - Live preview with draggable temperature layers.
-- Display rotation in 90° steps and a 1–5 second update interval.
+- Display rotation in 90° steps, adjustable brightness and a 1–5 second update interval.
 - Saved layouts, tray controls and automatic reconnection after sleep or restarting the background process.
 
 No GIF/video playback, custom layer types, Windows startup registration, or pump/fan control yet.

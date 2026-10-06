@@ -29,6 +29,11 @@ void token(const std::string& text) {
 }
 }
 
+int brightnessValue(int percent) {
+    require(percent >= 0 && percent <= 100, "brightness percent out of range");
+    return 10 + (9 * percent + 5) / 10;
+}
+
 Bytes encodeFrame(const Bytes& message) {
     if (message.size() > 65530) throw std::length_error("protocol message exceeds 16-bit frame");
     const std::size_t total = message.size() + 5;

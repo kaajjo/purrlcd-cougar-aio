@@ -26,6 +26,22 @@ static Pixels decode(const std::vector<uint8_t>& bytes) {
 }
 int main() {
     try {
+        auto legacy = defaultScene();
+        legacy.erase("brightness");
+        if (validateScene(legacy)["brightness"] != 100)
+            throw std::runtime_error("Legacy scene brightness migration failed");
+        for (int percent : {0, 37, 100}) {
+            auto scene = legacy; scene["brightness"] = percent;
+            auto saved = validateScene(Json::parse(scene.dump()));
+            if (saved["brightness"] != percent || saved["cpu"] != legacy["cpu"])
+                throw std::runtime_error("Brightness save/load changed scene data");
+        }
+        for (const Json invalid : {Json(-1), Json(101), Json(50.5), Json("50"), Json(nullptr), Json(4294967346ULL)}) {
+            auto scene = legacy; scene["brightness"] = invalid;
+            bool rejected = false;
+            try { validateScene(scene); } catch (const std::exception&) { rejected = true; }
+            if (!rejected) throw std::runtime_error("Invalid brightness accepted");
+        }
         Renderer renderer;
         SensorSnapshot sensors{}; sensors.hasCpuTemp = true; sensors.cpuTemp = 56.7;
         for (const auto& key : {"cpu", "gpu"}) for (int fontSize : {12, 44, 120}) {

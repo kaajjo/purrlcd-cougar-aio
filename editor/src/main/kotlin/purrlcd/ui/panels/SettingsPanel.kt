@@ -16,6 +16,9 @@ import org.jetbrains.compose.resources.stringResource
 import purrlcd.model.Scene
 import purrlcd.resources.Res
 import purrlcd.resources.duration_seconds
+import purrlcd.resources.settings_brightness_heading
+import purrlcd.resources.settings_brightness_hint
+import purrlcd.resources.settings_brightness_value
 import purrlcd.resources.settings_editor_body
 import purrlcd.resources.settings_editor_title
 import purrlcd.resources.settings_refresh_heading
@@ -88,6 +91,34 @@ fun SettingsPanel(scene: Scene, onSceneChange: (Scene) -> Unit) {
     Spacer(Modifier.height(EditorSpacing.Space16))
     Text(
         stringResource(Res.string.settings_rotation_hint),
+        color = Muted,
+        style = editorTextStyle(EditorTypography.Label)
+    )
+    Spacer(Modifier.height(EditorSpacing.Space32))
+    HorizontalDivider(color = Line)
+    Spacer(Modifier.height(EditorSpacing.Space24))
+    SectionLabel(stringResource(Res.string.settings_brightness_heading))
+    Spacer(Modifier.height(EditorSpacing.Space16))
+    Text(
+        stringResource(Res.string.settings_brightness_value, scene.brightness),
+        style = editorTextStyle(EditorTypography.Value)
+    )
+    Spacer(Modifier.height(EditorSpacing.Space4))
+    Slider(
+        value = scene.brightness.toFloat(),
+        onValueChange = { onSceneChange(scene.copy(brightness = it.roundToInt())) },
+        valueRange = 0f..100f,
+        colors = SliderDefaults.colors(thumbColor = Orange, activeTrackColor = Orange, inactiveTrackColor = Line)
+    )
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Text(stringResource(Res.string.settings_brightness_value, 0), color = Muted,
+            style = editorTextStyle(EditorTypography.Caption))
+        Text(stringResource(Res.string.settings_brightness_value, 100), color = Muted,
+            style = editorTextStyle(EditorTypography.Caption))
+    }
+    Spacer(Modifier.height(EditorSpacing.Space16))
+    Text(
+        stringResource(Res.string.settings_brightness_hint),
         color = Muted,
         style = editorTextStyle(EditorTypography.Label)
     )

@@ -10,7 +10,7 @@ public:
     Json open();
     void close();
     bool isOpen() const;
-    void configure(const std::vector<uint8_t>& backgroundPng, int rotation);
+    void configure(const std::vector<uint8_t>& backgroundPng, int rotation, int brightness);
     void overlay(const std::vector<uint8_t>& png);
 private:
     struct Impl;

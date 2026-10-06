@@ -22,7 +22,7 @@ Without arguments, the packaged editor looks for `engine/PurrLCD.exe` and `data/
 
 - **Screen:** 720 × 720 preview, connection controls and current sensor readings.
 - **Editor:** background, CPU/GPU layers, draggable positions, font size, labels, colors and visibility.
-- **Settings:** refresh interval and display rotation.
+- **Settings:** refresh interval, display rotation and brightness (0–100%; minimum keeps a dim backlight).
 - **Apply:** saves the scene through the engine. Preview edits alone do not save it; connecting also saves pending edits first.
 
 Colors, typography and shapes live in `ui/theme`. The interface uses Material 3 components and a dark theme with a peach accent.

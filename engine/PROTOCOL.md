@@ -123,6 +123,11 @@ request factory intercepted before transmission:
 - Brightness: `POST brightness`, body `{"value":100}`. The vendor UI maps its
   0–100 slider to `round(10 + 0.9 * slider)` in the body.
 
+PurrLCD saves the same 0–100 slider percentage as `brightness` in the scene
+(default 100 for older scenes). Configuration sends `POST brightness` only
+when the mapped value differs from the device's reported or last applied value.
+The minimum is a dim backlight.
+
 Firmware reports `timeout: 60` in the examined connection response. Its exact
 keepalive and idle-display semantics require separate measurement; connection
 fields are not sufficient evidence of those semantics.

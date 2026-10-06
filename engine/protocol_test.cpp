@@ -28,6 +28,13 @@ purrlcd::Bytes frame(const std::string& text) { return purrlcd::encodeFrame({tex
 
 int main(int argc, char** argv) {
     try {
+        check(purrlcd::brightnessValue(0) == 10, "minimum must keep backlight lit");
+        check(purrlcd::brightnessValue(1) == 11, "low brightness rounding mismatch");
+        check(purrlcd::brightnessValue(50) == 55, "midpoint brightness mismatch");
+        check(purrlcd::brightnessValue(99) == 99 && purrlcd::brightnessValue(100) == 100,
+              "maximum brightness mismatch");
+        rejected([] { purrlcd::brightnessValue(-1); }, "negative brightness accepted");
+        rejected([] { purrlcd::brightnessValue(101); }, "excessive brightness accepted");
         // Genuine COUGAR LCD Editor 1.0.14 log fixtures, September 28, 2026.
         const auto conn = hex("5a0035504f535420636f6e6e20310d0a5365714e756d6265723d300d0a446174653d313739303632393134373339370d0a0d0a615a");
         check(purrlcd::encodeRequest("POST", "conn", 0, 1790629147397ULL) == conn,

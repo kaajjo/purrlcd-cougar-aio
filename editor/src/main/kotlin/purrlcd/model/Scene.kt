@@ -23,6 +23,7 @@ data class Scene(
     val backgroundColor: String = "#111318",
     val rotation: Int = 180,
     val intervalMs: Int = 1000,
+    val brightness: Int = 100,
     val cpu: TextLayer = TextLayer(),
     val gpu: TextLayer = TextLayer(y = 630, label = "GPU")
 )

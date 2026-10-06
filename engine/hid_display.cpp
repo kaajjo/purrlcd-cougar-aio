@@ -26,6 +26,7 @@ struct HidDisplay::Impl {
     uint32_t sequence = 0;
     uint64_t fileCounter = 0;
     int deviceRotation = 180;
+    int deviceBrightness = -1;
     Bytes previousBackground;
     ~Impl() { close(); }
     void close() {
@@ -154,12 +155,17 @@ Json HidDisplay::open() {
         HidD_FlushQueue(impl_->handle);
         auto info = impl_->command("conn");
         impl_->deviceRotation = info.value("degree", 180);
+        impl_->deviceBrightness = info.value("brightness", -1);
         impl_->command("power", {{"event", "resume"}});
         return info;
     } catch (...) { close(); throw; }
 }
-void HidDisplay::configure(const Bytes& background, int rotation) {
+void HidDisplay::configure(const Bytes& background, int rotation, int brightness) {
     if (!isOpen()) throw std::runtime_error("Display not connected");
+    const int value = brightnessValue(brightness);
+    if (value != impl_->deviceBrightness) {
+        impl_->command("brightness", {{"value", value}}); impl_->deviceBrightness = value;
+    }
     if (rotation != impl_->deviceRotation) {
         impl_->command("rotate", {{"degree", rotation}}); impl_->deviceRotation = rotation;
     }

@@ -67,6 +67,9 @@
     <string name="settings_refresh_hint">Less frequent updates reduce requests to sensors and the screen.</string>
     <string name="settings_refresh_interval">Every %1$d s</string>
     <string name="settings_rotation_heading">SCREEN ROTATION</string>
+    <string name="settings_brightness_heading">BRIGHTNESS</string>
+    <string name="settings_brightness_value">%1$d%</string>
+    <string name="settings_brightness_hint">Click Apply to change the backlight. At 0%, the screen stays dimly lit.</string>
     <string name="settings_rotation_hint">Choose the orientation to match the water block position. The preview shows the layout upright.</string>
     <string name="sidebar_editor">Editor</string>
     <string name="sidebar_engine_missing">Engine not found</string>
